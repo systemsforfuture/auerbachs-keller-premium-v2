@@ -1,363 +1,924 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Auerbachs Keller Leipzig — Seit 1525</title>
-<meta name="description" content="Deutschlands beruehmtestes Kellerrestaurant. Seit 1525 in der Maedler-Passage Leipzig. Wo Goethe den Faust schrieb. Reservierung: 0341 216100">
-<meta property="og:title" content="Auerbachs Keller Leipzig — Seit 1525">
-<meta property="og:description" content="500 Jahre Gastfreundschaft im historischen Gewoelbe. Saechsische Kueche, neu interpretiert.">
-<meta property="og:image" content="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/340_sli_rest-ambiente.jpg">
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1510'/><text x='16' y='22' text-anchor='middle' fill='%23C4853A' font-size='18' font-family='serif' font-style='italic'>A</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg:#1A1510;--bg-alt:#211C15;--bg-deep:#151009;
-  --accent:#C4853A;--accent-hover:#A8702E;--accent-muted:rgba(196,133,58,0.15);
-  --cream:#FAF8F5;--text:#B5A898;--text-muted:#7A6E60;--text-faint:#4D4338;
-  --border:#2E251B;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'DM Sans',-apple-system,sans-serif;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--cream);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{text-decoration:none;color:inherit}img{display:block;max-width:100%}button{border:none;background:none;cursor:pointer;font:inherit}
-::selection{background:rgba(196,133,58,0.3)}
-.wrap{max-width:1280px;margin:0 auto;padding-inline:clamp(20px,4vw,48px)}
-section{padding-block:clamp(80px,10vw,140px)}
-.label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent)}
-.h1{font-family:var(--serif);font-size:clamp(38px,7vw,76px);font-weight:300;line-height:1.05;letter-spacing:-0.02em;font-style:italic}
-.h2{font-family:var(--serif);font-size:clamp(28px,4.5vw,52px);font-weight:400;line-height:1.1;letter-spacing:-0.01em}
-.body-lg{font-size:clamp(16px,1.1vw,18px);color:var(--text);line-height:1.75}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:4px;transition:all .3s}
-.btn-fill{background:var(--accent);color:var(--bg)}.btn-fill:hover{background:var(--accent-hover)}
-.btn-line{border:1px solid var(--border);color:var(--cream)}.btn-line:hover{border-color:var(--accent);color:var(--accent)}
-.img-cover{width:100%;height:100%;object-fit:cover}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auerbachs Keller Leipzig - Deutschlands legendärstes Restaurant seit 1525</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1A1510;
+            --accent-color: #B87333;
+            --text-color: #FAF8F5;
+            --dark-overlay: rgba(0, 0, 0, 0.7);
+            --copper-border: 2px solid var(--accent-color);
+        }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s}
-nav.scrolled{background:rgba(26,21,16,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:12px 0}
-.nav-inner{display:flex;justify-content:space-between;align-items:center}
-.nav-brand{font-family:var(--serif);font-size:18px;font-weight:400;font-style:italic;color:var(--accent);letter-spacing:0.02em}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:13px;color:var(--text-muted);transition:color .3s}.nav-links a:hover{color:var(--cream)}
-.nav-cta{padding:9px 22px;background:var(--accent);color:var(--bg);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:4px;transition:background .3s}
-.nav-cta:hover{background:var(--accent-hover)}
-@media(max-width:768px){.nav-links{display:none}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* HERO — fullscreen image with overlay text */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(26,21,16,0.7) 35%,rgba(26,21,16,0.3) 70%,rgba(26,21,16,0.5) 100%)}
-.hero-content{position:relative;z-index:2;padding-bottom:clamp(48px,6vw,80px);max-width:720px}
-.hero-stats{display:flex;gap:32px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1)}
-.hero-stat-num{font-family:var(--serif);font-size:clamp(22px,2vw,28px);font-weight:400}
-.hero-stat-label{font-size:11px;color:var(--text-muted);margin-top:2px;letter-spacing:0.03em}
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-/* ROOMS — editorial bento grid */
-.rooms{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:12px;margin-top:48px;height:clamp(400px,50vw,640px)}
-.room{position:relative;border-radius:8px;overflow:hidden}
-.room:first-child{grid-row:1/3}
-.room img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(0.16,1,0.3,1)}
-.room:hover img{transform:scale(1.03)}
-.room::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,16,9,0.9) 0%,transparent 55%)}
-.room-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px;z-index:2}
-.room-name{font-family:var(--serif);font-size:clamp(18px,1.8vw,24px);font-weight:400;font-style:italic;margin-bottom:4px}
-.room-desc{font-size:12px;color:var(--text);line-height:1.5;opacity:0.8}
-@media(max-width:640px){.rooms{grid-template-columns:1fr;grid-template-rows:auto;height:auto}.room{aspect-ratio:16/10}.room:first-child{grid-row:auto}}
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* QUOTE */
-.quote-sec{background:var(--bg-deep);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center;padding-block:clamp(56px,8vw,100px)}
-.quote-line{width:40px;height:1px;background:var(--accent);margin:0 auto 32px}
-.quote-text{font-family:var(--serif);font-size:clamp(20px,3.5vw,36px);font-weight:300;font-style:italic;line-height:1.4;max-width:750px;margin:0 auto 20px}
-.quote-attr{font-size:12px;color:var(--text-muted);letter-spacing:0.05em}
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
 
-/* SPLIT */
-.split{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,72px);align-items:center}
-.split-rev{grid-template-columns:7fr 5fr}
-.split-img{border-radius:8px;overflow:hidden;aspect-ratio:4/3}
-@media(max-width:768px){.split,.split-rev{grid-template-columns:1fr}.split-img{order:-1}}
+        /* Animations */
+        @keyframes fadeInDelayed {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.phone-big{font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:400;font-style:italic;color:var(--accent);margin:12px 0}
-.phone-big a{color:var(--accent)}
-.info-line{font-size:14px;color:var(--text);line-height:2}
-.map-box{border-radius:8px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3}
-.map-box iframe{width:100%;height:100%;border:none;filter:grayscale(0.3) contrast(1.05)}
-@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 5px var(--accent-color); }
+            50% { box-shadow: 0 0 15px var(--accent-color); }
+            100% { box-shadow: 0 0 5px var(--accent-color); }
+        }
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:36px 0}
-.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-brand{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:15px}
-.footer-links{display:flex;gap:20px}
-.footer-links a{font-size:12px;color:var(--text-muted)}.footer-links a:hover{color:var(--text)}
-.footer-copy{font-size:11px;color:var(--text-faint)}
+        /* Scroll-driven animations (fallback if not supported) */
+        @supports (animation-timeline: view()) {
+            .section-fade-in {
+                animation: fade-in linear forwards;
+                animation-timeline: view();
+                animation-range: 0% 20%;
+            }
+            .section-slide-up {
+                animation: slide-up linear forwards;
+                animation-timeline: view();
+                animation-range: 0% 25%;
+            }
+            .room-card:hover .room-image-wrapper {
+                animation: zoomIn 0.5s forwards;
+                animation-timeline: hover();
+            }
+            .room-card:hover {
+                animation: borderGlow 0.5s forwards;
+                animation-timeline: hover();
+            }
+        }
 
-/* MOBILE CTA */
-.mob-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:10px 16px;background:rgba(26,21,16,0.96);backdrop-filter:blur(12px);border-top:1px solid var(--border)}
-.mob-cta a{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:var(--accent);color:var(--bg);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:6px;width:100%}
-@media(max-width:768px){.mob-cta{display:block}footer{padding-bottom:72px}}
+        @keyframes fade-in {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide-up {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes zoomIn {
+            to { transform: scale(1.05); }
+        }
+        @keyframes borderGlow {
+            to { border: var(--copper-border); box-shadow: 0 0 15px var(--accent-color); }
+        }
 
-/* ── ANIMATIONS ── */
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 0;
+            background-color: transparent;
+            z-index: 1000;
+            transition: background-color 0.5s ease, padding 0.3s ease;
+            backdrop-filter: blur(0px);
+        }
 
-/* Scroll-reveal: content always visible, animation is enhancement only */
-@keyframes fadeUp { from { opacity:0.15; transform:translateY(32px) } to { opacity:1; transform:translateY(0) } }
-@keyframes fadeScale { from { opacity:0.15; transform:scale(0.97) } to { opacity:1; transform:scale(1) } }
-@keyframes slideLeft { from { opacity:0.15; transform:translateX(-40px) } to { opacity:1; transform:translateX(0) } }
-@keyframes slideRight { from { opacity:0.15; transform:translateX(40px) } to { opacity:1; transform:translateX(0) } }
+        nav.scrolled {
+            background-color: rgba(26, 21, 16, 0.9);
+            padding: 15px 0;
+            backdrop-filter: blur(10px);
+        }
 
-/* Use CSS scroll-driven animations (Chrome 115+, graceful degradation) */
-@supports (animation-timeline: view()) {
-  .anim-up { animation: fadeUp linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
-  .anim-scale { animation: fadeScale linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
-  .anim-left { animation: slideLeft linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
-  .anim-right { animation: slideRight linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
-}
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Hero text reveal */
-@keyframes heroReveal { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
-.hero-content > * { animation: heroReveal 0.8s cubic-bezier(0.16,1,0.3,1) both; }
-.hero-content > *:nth-child(1) { animation-delay: 0.2s }
-.hero-content > *:nth-child(2) { animation-delay: 0.4s }
-.hero-content > *:nth-child(3) { animation-delay: 0.6s }
-.hero-content > *:nth-child(4) { animation-delay: 0.8s }
-.hero-content > *:nth-child(5) { animation-delay: 1.0s }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 2.5em;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
 
-/* Hero image parallax */
-.hero-bg img { transition: transform 0.1s linear; will-change: transform; }
+        nav.scrolled .logo {
+            color: var(--text-color);
+        }
 
-/* Room cards — enhanced hover */
-.room::before { content:''; position:absolute; inset:0; z-index:1; border:1px solid transparent; border-radius:8px; transition: border-color 0.4s; }
-.room:hover::before { border-color: var(--accent); }
-.room-info { transform: translateY(4px); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
-.room:hover .room-info { transform: translateY(0); }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
 
-/* Button hover glow */
-.btn-fill { position:relative; overflow:hidden; }
-.btn-fill::after { content:''; position:absolute; inset:-2px; background:var(--accent); filter:blur(12px); opacity:0; transition:opacity 0.3s; z-index:-1; border-radius:4px; }
-.btn-fill:hover::after { opacity:0.3; }
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
 
-/* Quote ornament animation */
-.quote-line { transition: width 0.8s cubic-bezier(0.16,1,0.3,1); }
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
 
-/* Smooth link underlines */
-.nav-links a { position:relative; }
-.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s; }
-.nav-links a:hover::after { width:100%; }
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-/* Split image hover zoom */
-.split-img img { transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
-.split-img:hover img { transform: scale(1.03); }
+        .cta-button:hover {
+            background-color: var(--text-color);
+            color: var(--accent-color);
+            transform: translateY(-2px);
+            animation: buttonGlow 1.5s infinite ease-in-out;
+        }
 
-/* Map hover */
-.map-box { transition: border-color 0.3s; }
-.map-box:hover { border-color: var(--accent); }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/340_sli_rest-ambiente.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-/* COOKIE */
-.cookie{position:fixed;bottom:12px;left:12px;max-width:400px;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;padding:16px 20px;z-index:200;display:none;font-size:13px;color:var(--text);gap:12px;align-items:center}
-.cookie.show{display:flex}
-.cookie button{padding:7px 16px;background:var(--accent);color:var(--bg);font-size:11px;font-weight:600;border-radius:4px;white-space:nowrap}
-@media(max-width:768px){.cookie{bottom:64px}}
-</style>
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--dark-overlay), var(--dark-overlay));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInDelayed 1.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 5em;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            animation-delay: 0.7s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .hero-content .subtitle {
+            font-size: 1.5em;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation-delay: 0.9s;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation-delay: 1.1s;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-item .label {
+            font-size: 1.1em;
+            color: var(--text-color);
+        }
+
+        .hero-cta-wrapper {
+            margin-top: 60px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation-delay: 1.3s;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(50px); /* Default for fallback */
+            animation: fade-in linear forwards;
+            animation-timeline: view();
+            animation-range: calc(100vh - 200px) 100%; /* Start animation when section is nearing viewport */
+        }
+
+        section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 3.5em;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-size: 0.9em;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Die Räume */
+        .rooms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 60px 0;
+        }
+
+        .room-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            border: 2px solid transparent; /* For hover effect */
+            animation-timeline: view(); /* For scroll-driven animation */
+            animation-range: calc(100vh - 300px) 100%;
+            animation-name: section-slide-up; /* Use section-slide-up as a base */
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .room-image-wrapper {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .room-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .room-card:hover .room-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .room-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, var(--dark-overlay), transparent);
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .room-card:hover .room-overlay {
+            opacity: 0.8;
+        }
+
+        .room-overlay h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 2.2em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .room-overlay p {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+
+        /* Quote Band */
+        .quote-band {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 80px 0;
+            text-align: center;
+            font-size: 2.2em;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            position: relative;
+            animation-timeline: view();
+            animation-range: calc(100vh - 200px) 100%;
+            animation-name: section-fade-in;
+        }
+
+        .quote-band p {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Kulinarik Section */
+        .kulinarik {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 100px 0;
+            animation-timeline: view();
+            animation-range: calc(100vh - 200px) 100%;
+            animation-name: section-slide-up;
+        }
+
+        .kulinarik .text-content {
+            flex: 1;
+        }
+
+        .kulinarik .image-content {
+            flex: 1.5; /* Slightly larger for visual emphasis */
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .kulinarik .image-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .kulinarik h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 3em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* Geschichte Section */
+        .geschichte {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            padding: 100px 0;
+            animation-timeline: view();
+            animation-range: calc(100vh - 200px) 100%;
+            animation-name: section-slide-up;
+        }
+
+        .geschichte .image-content {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .geschichte .image-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .geschichte .text-content {
+            flex: 1.5;
+        }
+
+        .geschichte h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 3em;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .geschichte .goethe-luther {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-top: 30px;
+            display: block;
+        }
+
+        /* Reservierung Section */
+        .reservierung {
+            text-align: center;
+            padding: 100px 0;
+            animation-timeline: view();
+            animation-range: calc(100vh - 200px) 100%;
+            animation-name: section-fade-in;
+        }
+
+        .reservierung .phone-number {
+            font-size: 6em;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .reservierung .phone-number:hover {
+            color: var(--text-color);
+        }
+
+        .reservierung .contact-info {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .reservierung .contact-info a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .reservierung .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        .reservierung .address,
+        .reservierung .hours {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .reservierung .map-wrapper {
+            margin-top: 50px;
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .reservierung .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+            color: rgba(250, 248, 245, 0.6);
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero-content .subtitle {
+                font-size: 1.2em;
+            }
+            .stats-bar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .hero-cta-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            section h2 {
+                font-size: 2.8em;
+            }
+
+            .rooms {
+                grid-template-columns: 1fr;
+            }
+
+            .kulinarik, .geschichte {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .kulinarik .image-content,
+            .kulinarik .text-content,
+            .geschichte .image-content,
+            .geschichte .text-content {
+                flex: auto;
+                width: 100%;
+            }
+
+            .quote-band {
+                font-size: 1.8em;
+            }
+
+            .reservierung .phone-number {
+                font-size: 3.5em;
+            }
+
+            .reservierung .map-wrapper {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 0;
+            }
+            .logo {
+                font-size: 2em;
+            }
+            nav ul li a {
+                font-size: 1em;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero-content .subtitle {
+                font-size: 1em;
+            }
+            .stats-bar {
+                gap: 15px;
+            }
+            .stat-item .number {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+            section h2 {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+            .section-label {
+                font-size: 0.8em;
+            }
+
+            .room-card {
+                height: auto; /* Let content define height */
+            }
+            .room-image-wrapper {
+                height: 300px;
+            }
+            .room-overlay h3 {
+                font-size: 1.8em;
+            }
+
+            .quote-band {
+                padding: 60px 0;
+                font-size: 1.5em;
+            }
+
+            .kulinarik, .geschichte {
+                gap: 30px;
+            }
+            .kulinarik h3, .geschichte h3 {
+                font-size: 2.5em;
+            }
+
+            .reservierung .phone-number {
+                font-size: 3em;
+            }
+            .reservierung .contact-info,
+            .reservierung .address,
+            .reservierung .hours {
+                font-size: 1em;
+            }
+            .reservierung .map-wrapper {
+                height: 300px;
+            }
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 21, 16, 0.95);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
+            z-index: 1001;
+            font-size: 0.9em;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-banner p {
+            margin-bottom: 15px;
+        }
+
+        .cookie-banner .cta-button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+        .cookie-banner .cta-button:hover {
+            background-color: var(--text-color);
+            color: var(--accent-color);
+        }
+
+        /* Sticky Mobile CTA - Only for small screens */
+        .sticky-mobile-cta {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            padding: 15px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            z-index: 999;
+            text-decoration: none;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            animation: buttonGlow 1.5s infinite ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-mobile-cta {
+                display: block; /* Show on smaller screens */
+            }
+            /* Adjust padding for sections to avoid content being hidden by sticky CTA */
+            section {
+                padding-bottom: 100px; /* Add extra padding at the bottom */
+            }
+            .hero-cta-wrapper {
+                display: none; /* Hide desktop CTAs on mobile */
+            }
+            .hero {
+                padding-bottom: 150px; /* Make space for the sticky CTA */
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="wrap nav-inner">
-    <a href="#" class="nav-brand">Auerbachs Keller</a>
-    <div class="nav-links">
-      <a href="#raeume">Die Raeume</a>
-      <a href="#kulinarik">Kulinarik</a>
-      <a href="#geschichte">Geschichte</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="tel:+493412161000" class="nav-cta">Reservieren</a>
-    </div>
-  </div>
-</nav>
-
-<!-- HERO — echtes Bild: Grosser Keller Ambiente (der atmosphaerischste Shot) -->
-<section class="hero">
-  <div class="hero-bg">
-    <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/340_sli_rest-ambiente.jpg?m=1697553070" alt="Das atmosphaerische Ambiente im Grossen Keller — Kerzenlicht, historisches Gewoelbe, gedeckte Tische" loading="eager">
-  </div>
-  <div class="wrap hero-content">
-    <div class="label" style="margin-bottom:16px">Seit 1525 · Leipzig · Maedler-Passage</div>
-    <h1 class="h1">Wo Goethe<br>den Faust schrieb</h1>
-    <p class="body-lg" style="margin-top:20px;max-width:540px">500 Jahre Gastfreundschaft in historischen Kellergewoelben. Saechsische Kueche, die Geschichte schmecken laesst.</p>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
-      <a href="tel:+493412161000" class="btn btn-fill">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Tisch reservieren
-      </a>
-      <a href="#raeume" class="btn btn-line">Entdecken</a>
-    </div>
-    <div class="hero-stats">
-      <div><div class="hero-stat-num">4.4 ★</div><div class="hero-stat-label">Google Rating</div></div>
-      <div><div class="hero-stat-num">9.500+</div><div class="hero-stat-label">Bewertungen</div></div>
-      <div><div class="hero-stat-num">1525</div><div class="hero-stat-label">Gegruendet</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- DIE RAEUME — echte Bilder von jedem Raum -->
-<section id="raeume">
-  <div class="wrap">
-    <div class="label anim-up">Unser Haus</div>
-    <h2 class="h2 anim-up" style="margin-top:12px">Vier Jahrhunderte.<br>Vier Raeume.</h2>
-    <div class="rooms anim-scale">
-      <div class="room">
-        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/341_head_grosserkeller.jpg?m=1697553644" alt="Der Grosse Keller — saechsische Kueche im geschichtstraechtigen Gewoelbe" loading="lazy">
-        <div class="room-info">
-          <div class="room-name">Grosser Keller</div>
-          <div class="room-desc">Klassisch saechsische Kueche a la carte im geschichtstraechtigen Ambiente</div>
+    <nav id="main-nav">
+        <div class="container">
+            <a href="#hero" class="logo">Auerbachs Keller</a>
+            <ul>
+                <li><a href="#raeume">Räume</a></li>
+                <li><a href="#kulinarik">Kulinarik</a></li>
+                <li><a href="#geschichte">Geschichte</a></li>
+                <li><a href="#reservierung">Reservierung</a></li>
+            </ul>
+            <a href="#reservierung" class="cta-button">Reservieren</a>
         </div>
-      </div>
-      <div class="room">
-        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/328_head_weinstuben.jpg?m=1697553644" alt="Historische Weinstuben — restaurierte Gastraeume aus dem 16. bis 19. Jahrhundert" loading="lazy">
-        <div class="room-info">
-          <div class="room-name">Historische Weinstuben</div>
-          <div class="room-desc">Vier restaurierte Gastraeume aus dem 16. bis 19. Jahrhundert</div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="animated-text">Wo Goethe den Faust schrieb</h1>
+            <div class="subtitle animated-text" style="animation-delay: 0.2s;">Seit 1525. Leipzig.</div>
+            <div class="stats-bar animated-text" style="animation-delay: 0.4s;">
+                <div class="stat-item">
+                    <span class="number">~500</span>
+                    <span class="label">Jahre Geschichte</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">4</span>
+                    <span class="label">Legendäre Räume</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">1</span>
+                    <span class="label">Unvergessliches Erlebnis</span>
+                </div>
+            </div>
+            <div class="hero-cta-wrapper animated-text" style="animation-delay: 0.6s;">
+                <a href="#reservierung" class="cta-button">Tisch reservieren</a>
+                <a href="#raeume" class="cta-button secondary">Unsere Räume entdecken</a>
+            </div>
         </div>
-      </div>
-      <div class="room">
-        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/352_head_mephistobar.jpg?m=1697553644" alt="Mephisto Bar — Kaffee am Tag, extravagante Cocktails am Abend" loading="lazy">
-        <div class="room-info">
-          <div class="room-name">Mephisto Bar</div>
-          <div class="room-desc">Kaffee-Spezialitaeten am Tag, extravagante Cocktails am Abend</div>
+    </section>
+
+    <section id="raeume" class="section-slide-up">
+        <div class="container">
+            <div class="section-label">UNSER HAUS</div>
+            <h2>Vier Jahrhunderte. Vier Räume.</h2>
+            <div class="rooms">
+                <div class="room-card">
+                    <div class="room-image-wrapper">
+                        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/341_head_grosserkeller.jpg" alt="Großer Keller">
+                    </div>
+                    <div class="room-overlay">
+                        <h3>Großer Keller</h3>
+                        <p>Das Herzstück, seit jeher.</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image-wrapper">
+                        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/328_head_weinstuben.jpg" alt="Weinstuben">
+                    </div>
+                    <div class="room-overlay">
+                        <h3>Weinstuben</h3>
+                        <p>Gemütlichkeit und erlesene Weine.</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image-wrapper">
+                        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/352_head_mephistobar.jpg" alt="Mephisto Bar">
+                    </div>
+                    <div class="room-overlay">
+                        <h3>Mephisto Bar</h3>
+                        <p>Wo Faust und Mephisto sich trafen.</p>
+                    </div>
+                </div>
+                 <div class="room-card">
+                    <div class="room-image-wrapper">
+                        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/454_sli_rest-kulinarik.jpg" alt="Mittlerer Keller">
+                    </div>
+                    <div class="room-overlay">
+                        <h3>Mittlerer Keller</h3>
+                        <p>Exklusives Ambiente für besondere Anlässe.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- 3D SPLINE DIVIDER — subtle interactive element -->
-<div style="position:relative;height:200px;overflow:hidden;background:var(--bg-deep);border-top:1px solid var(--border)">
-  <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" style="position:absolute;inset:0;opacity:0.25;pointer-events:auto" loading="lazy"></spline-viewer>
-  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 30%,transparent 70%,var(--bg-deep) 100%);pointer-events:none"></div>
-</div>
-
-<!-- ZITAT — das echte saechsische Sprichwort -->
-<section class="quote-sec" id="geschichte">
-  <div class="wrap">
-    <div class="quote-line anim-up"></div>
-    <blockquote class="quote-text anim-up">
-      &bdquo;Wer nach Leipzig zur Messe gereist,<br>ohne in Auerbachs Keller zu gehen,<br>der schweige still.&ldquo;
-    </blockquote>
-    <div class="quote-attr">Saechsisches Sprichwort, 17. Jahrhundert</div>
-  </div>
-</section>
-
-<!-- KULINARIK — echtes Bild: Kulinarik-Slider -->
-<section id="kulinarik">
-  <div class="wrap">
-    <div class="split">
-      <div class="anim-left">
-        <div class="label">Kulinarik</div>
-        <h2 class="h2" style="margin-top:12px;margin-bottom:20px">Saechsische Kueche.<br>Neu interpretiert.</h2>
-        <p class="body-lg" style="margin-bottom:12px">Entdecken Sie eine harmonische Auswahl an regionalen Koestlichkeiten und internationalen Spezialitaeten — von kulinarischen Meisterwerken als 3- oder 4-Gaenge Menue bis zum stilvoll praesentierten Buffet.</p>
-        <p class="body-lg" style="margin-bottom:32px">Im Grossen Keller, den Salons Helena und Maedler oder in den Historischen Weinstuben.</p>
-        <a href="https://www.auerbachs-keller-leipzig.de/de/speisen/a-la-carte/vorspeisen.php" target="_blank" class="btn btn-line">Speisekarte ansehen →</a>
-      </div>
-      <div class="split-img anim-right">
-        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/454_sli_rest-kulinarik.jpg?m=1697553102" alt="Kulinarische Koestlichkeiten im Auerbachs Keller" loading="lazy" class="img-cover">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GESCHICHTE — echtes Bild: Mephisto-Szene mit Faust-Gemaelde -->
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="split split-rev">
-      <div class="split-img anim-left">
-        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/134_auerbachskeller.jpg?m=1697553644" alt="Historische Szene im Fasskeller — Mephisto, Fasskellermeister, Faust-Gemaelde im Hintergrund" loading="lazy" class="img-cover">
-      </div>
-      <div class="anim-right">
-        <div class="label">500 Jahre Geschichte</div>
-        <h2 class="h2" style="margin-top:12px;margin-bottom:20px">Goethe. Luther.<br>Und Sie.</h2>
-        <p class="body-lg" style="margin-bottom:16px">Johann Wolfgang von Goethe verewigte den Keller in seinem Faust — die Szene &bdquo;Auerbachs Keller in Leipzig&ldquo; machte das Restaurant weltberuehmt.</p>
-        <p class="body-lg">Martin Luther, Zar Peter I. und unzaehlige Kuenstler und Staatsoberhaeupter waren hier zu Gast. Unsere Kunstsammlung mit originalen Wand- und Tafelgemaelden laesst sich am besten bei einer Fuehrung erkunden.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- KONTAKT -->
-<section id="kontakt" style="background:var(--bg-alt);border-top:1px solid var(--border)">
-  <div class="wrap">
-    <div class="label">Reservierung</div>
-    <h2 class="h2" style="margin-top:12px">Wir freuen uns<br>auf Ihren Besuch.</h2>
-    <div class="contact-grid">
-      <div>
-        <div class="phone-big"><a href="tel:+493412161000">0341 216 100</a></div>
-        <div class="info-line">
-          Auerbachs Keller Leipzig<br>
-          Maedler-Passage<br>
-          Grimmaische Str. 2–4<br>
-          04109 Leipzig<br><br>
-          <strong>Grosser Keller</strong><br>
-          Mo: 12–22 Uhr · Di–Mi: 17–22 Uhr<br>
-          Do: 12–22 Uhr · Fr–Sa: 12–23 Uhr<br>
-          So: 12–22 Uhr<br><br>
-          <strong>Mephisto Bar</strong><br>
-          Mo–Do: 12–22 Uhr · Fr–Sa: 12–24 Uhr<br>
-          So: 12–18 Uhr<br><br>
-          <a href="https://www.auerbachs-keller-leipzig.de/de/kontakt/reservierung/tisch.php" target="_blank" style="color:var(--accent)">Online-Reservierung →</a>
+    <section class="quote-band">
+        <div class="container">
+            <p>"Wer nach Leipzig zur Messe gereist, ohne in Auerbachs Keller zu gehen, der schweige still."</p>
         </div>
-      </div>
-      <div class="map-box">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.5!2d12.3747!3d51.3397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6f82085c1f3f7%3A0x5d7b9a6e2c3b2a1!2sAuerbachs%20Keller!5e0!3m2!1sde!2sde!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+    </section>
+
+    <section id="kulinarik" class="kulinarik section-slide-up">
+        <div class="container">
+            <div class="text-content">
+                <div class="section-label">GENUSS</div>
+                <h2>Kulinarik auf höchstem Niveau</h2>
+                <p>Erleben Sie sächsische Spezialitäten und internationale Gaumenfreuden, zubereitet mit Leidenschaft und den besten Zutaten. Unsere Küche ist eine Hommage an die Tradition und gleichzeitig ein Spiegelbild moderner Kochkunst.</p>
+                <p>Von herzhaften Klassikern bis hin zu raffinierten Kreationen – lassen Sie sich von uns verwöhnen.</p>
+                <a href="#reservierung" class="cta-button" style="margin-top: 30px;">Menü entdecken & Reservieren</a>
+            </div>
+            <div class="image-content">
+                <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/454_sli_rest-kulinarik.jpg" alt="Kulinarik">
+            </div>
+        </div>
+    </section>
+
+    <section id="geschichte" class="geschichte section-slide-up">
+        <div class="container">
+            <div class="image-content">
+                <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/134_auerbachskeller.jpg" alt="Auerbachs Keller historische Ansicht">
+            </div>
+            <div class="text-content">
+                <div class="section-label">GESCHICHTE</div>
+                <h2>Ein Ort voller Legenden</h2>
+                <p>Seit 1525 ist Auerbachs Keller mehr als nur ein Restaurant. Er ist ein lebendiges Stück Geschichte, ein Ort, an dem sich Generationen trafen und große Geister wie Johann Wolfgang von Goethe inspiriert wurden, um Teile seines Meisterwerks "Faust" hier zu schreiben.</p>
+                <p class="goethe-luther">Goethe. Luther. Faust. Geschichten, die in unseren Mauern lebendig werden.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservierung" class="reservierung">
+        <div class="container">
+            <div class="section-label">IHRE ANFRAGE</div>
+            <h2>Reservierung</h2>
+            <a href="tel:+49341216100" class="phone-number">0341 216100</a>
+            <div class="contact-info">
+                <p class="address">Auerbachs Keller, Grimmaische Straße 2-4, 04109 Leipzig</p>
+                <p class="hours">Öffnungszeiten: Täglich von 11:30 bis 24:00 Uhr</p>
+                <p><a href="mailto:info@auerbachs-keller-leipzig.de">info@auerbachs-keller-leipzig.de</a></p>
+            </div>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2556.221033408796!2d12.37537431550852!3d51.34057237961511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6f9b5a3c87b21%3A0x3d55b53b7b1a411c!2sAuerbachs%20Keller%20Leipzig!5e0!3m2!1sde!2sde!4v1678888888888" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            &copy; 2023 Auerbachs Keller Leipzig. Alle Rechte vorbehalten. | <a href="#" style="color: rgba(250, 248, 245, 0.6); text-decoration: underline;">Impressum</a> | <a href="#" style="color: rgba(250, 248, 245, 0.6); text-decoration: underline;">Datenschutz</a>
+        </div>
+    </footer>
+
+    <div id="cookieBanner" class="cookie-banner">
+        <p>Wir verwenden Cookies, um Ihnen das bestmögliche Erlebnis auf unserer Website zu bieten. Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu. <a href="#" style="color: var(--accent-color); text-decoration: underline;">Mehr erfahren</a></p>
+        <button id="acceptCookies" class="cta-button">Akzeptieren</button>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap footer-inner">
-    <div class="footer-brand">Auerbachs Keller</div>
-    <div class="footer-links">
-      <a href="#raeume">Raeume</a>
-      <a href="#kulinarik">Kulinarik</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="https://www.auerbachs-keller-leipzig.de" target="_blank">Impressum</a>
-      <a href="https://www.auerbachs-keller-leipzig.de" target="_blank">Datenschutz</a>
-    </div>
-    <div class="footer-copy">&copy; 2026 Auerbachs Keller Leipzig</div>
-  </div>
-</footer>
+    <a href="#reservierung" class="sticky-mobile-cta">Jetzt reservieren</a>
 
-<!-- MOBILE STICKY CTA -->
-<div class="mob-cta">
-  <a href="tel:+493412161000">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    Reservieren — 0341 216 100
-  </a>
-</div>
+    <script>
+        // Navigation Scroll Effect
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
 
-<!-- COOKIE -->
-<div class="cookie show" id="ck">
-  <span>Wir verwenden Cookies fuer die bestmoegliche Erfahrung.</span>
-  <button onclick="document.getElementById('ck').style.display='none'">OK</button>
-</div>
+        // Hero Text Animation (Staggered Fade-in)
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.hero-content .animated-text');
+            animatedElements.forEach((el, index) => {
+                el.style.animation = `fadeInDelayed 1.5s forwards`;
+                el.style.animationDelay = `${index * 0.2 + 0.5}s`; // Stagger the delay
+            });
+        });
 
-<script>
-// Sticky nav + hero parallax
-const n=document.getElementById('nav');
-const heroImg=document.querySelector('.hero-bg img');
-window.addEventListener('scroll',()=>{
-  n.classList.toggle('scrolled',window.scrollY>60);
-  // Parallax: image moves slower than scroll (factor 0.3)
-  if(heroImg&&window.scrollY<window.innerHeight){
-    heroImg.style.transform='translateY('+window.scrollY*0.3+'px) scale(1.1)';
-  }
-},{passive:true});
-</script>
+        // Cookie Banner
+        const cookieBanner = document.getElementById('cookieBanner');
+        const acceptCookiesBtn = document.getElementById('acceptCookies');
+
+        if (localStorage.getItem('cookiesAccepted')) {
+            cookieBanner.style.display = 'none';
+        } else {
+            cookieBanner.classList.add('show');
+        }
+
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.remove('show');
+            // Optionally, hide it completely after a delay
+            setTimeout(() => {
+                cookieBanner.style.display = 'none';
+            }, 500);
+        });
+    </script>
 </body>
 </html>
