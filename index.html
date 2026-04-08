@@ -3,1034 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auerbachs Keller Leipzig — Seit 1525</title>
-<meta name="description" content="Deutschlands legendaerstes Restaurant. Wo Goethe den Faust schrieb. Seit 1525 in der Maedler-Passage Leipzig.">
+<title>Auerbachs Keller Leipzig — Wo Goethe den Faust schrieb</title>
+<meta name="description" content="Deutschlands legendärstes Restaurant seit 1525. Sächsische Küche, erlesene Weine und 500 Jahre Geschichte in der Mädler-Passage Leipzig.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <style>
-/* ═══════════════════════════════════════════════════
-   AUERBACHS KELLER v9 — Handcrafted Premium
-   Anti-Slop: No centered hero, no Inter, no emoji,
-   no purple/blue, no opacity:0 initial state
-   Copper #B87333 on Espresso #1A1510
-   ═══════════════════════════════════════════════════ */
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --espresso: #1A1510;
-  --espresso-deep: #0F0D09;
-  --copper: #B87333;
-  --copper-light: #D4956A;
-  --copper-glow: rgba(184, 115, 51, 0.15);
-  --cream: #F5F0EB;
-  --cream-dim: #C8C0B6;
-  --cream-muted: #8A8278;
-  --surface: rgba(245, 240, 235, 0.04);
-  --surface-hover: rgba(245, 240, 235, 0.07);
-  --border: rgba(245, 240, 235, 0.08);
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --ls-display: -0.03em;
-  --ls-label: 0.15em;
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-family: var(--font-body);
-  background: var(--espresso-deep);
-  color: var(--cream);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ─── UTILITY ─────────────────────────────── */
-.label {
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--copper);
-}
-
-.display {
-  font-family: var(--font-display);
-  font-weight: 300;
-  letter-spacing: var(--ls-display);
-  line-height: 1.05;
-  color: var(--cream);
-}
-
-.display em, .display i { font-style: italic; font-weight: 300; }
-
-/* ─── NAV ─────────────────────────────────── */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 1.25rem 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: background 0.6s, backdrop-filter 0.6s, border-color 0.6s;
-  border-bottom: 1px solid transparent;
-}
-
-.nav.scrolled {
-  background: rgba(15, 13, 9, 0.85);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border-bottom-color: var(--border);
-}
-
-.nav-logo {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.375rem;
-  font-weight: 400;
-  color: var(--copper);
-  text-decoration: none;
-  letter-spacing: -0.02em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--cream-dim);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover { color: var(--cream); }
-
-.nav-cta {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--espresso) !important;
-  background: var(--copper);
-  padding: 0.625rem 1.75rem;
-  text-decoration: none;
-  transition: box-shadow 0.4s, transform 0.3s;
-}
-
-.nav-cta:hover {
-  box-shadow: 0 0 30px rgba(184, 115, 51, 0.4);
-  transform: translateY(-1px);
-  color: var(--espresso) !important;
-}
-
-/* ─── HERO — Asymmetric 55/45 Split ──────── */
-.hero {
-  min-height: 100dvh;
-  display: grid;
-  grid-template-columns: 55fr 45fr;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8rem 4rem 4rem 6rem;
-  position: relative;
-  z-index: 2;
-}
-
-.hero-label {
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.hero-label::before {
-  content: '';
-  width: 2rem;
-  height: 1px;
-  background: var(--copper);
-}
-
-.hero-headline {
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
-  margin-bottom: 1.75rem;
-}
-
-.hero-body {
-  font-size: 1.0625rem;
-  color: var(--cream-dim);
-  max-width: 480px;
-  line-height: 1.7;
-  margin-bottom: 2.5rem;
-  font-weight: 300;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--espresso);
-  background: var(--copper);
-  padding: 1rem 2.25rem;
-  text-decoration: none;
-  transition: box-shadow 0.4s, transform 0.3s;
-}
-
-.btn-primary:hover {
-  box-shadow: 0 4px 40px rgba(184, 115, 51, 0.35);
-  transform: translateY(-2px);
-}
-
-.btn-primary svg { width: 14px; height: 14px; }
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 400;
-  color: var(--cream-dim);
-  text-decoration: none;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
-  transition: color 0.3s, border-color 0.3s;
-}
-
-.btn-ghost:hover {
-  color: var(--cream);
-  border-color: var(--copper);
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border);
-}
-
-.stat-value {
-  font-family: var(--font-display);
-  font-size: 2.25rem;
-  font-weight: 300;
-  color: var(--cream);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 0.375rem;
-}
-
-.stat-label {
-  font-size: 0.6875rem;
-  color: var(--cream-muted);
-  letter-spacing: 0.08em;
-}
-
-/* Hero Image Column */
-.hero-image {
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.08);
-  transition: transform 12s var(--ease-out-expo);
-}
-
-body.loaded .hero-image img {
-  transform: scale(1);
-}
-
-.hero-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, var(--espresso-deep) 0%, transparent 30%),
-    linear-gradient(to top, var(--espresso-deep) 0%, transparent 20%);
-  pointer-events: none;
-}
-
-/* Hero text stagger reveal */
-.hero-content .label     { animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.2s both; }
-.hero-headline           { animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.35s both; }
-.hero-body               { animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.5s both; }
-.hero-actions            { animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.65s both; }
-.hero-stats              { animation: fadeSlideUp 0.8s var(--ease-out-expo) 0.8s both; }
-
-@keyframes fadeSlideUp {
-  from { opacity: 0.01; transform: translateY(30px); }
-  to   { opacity: 1;    transform: translateY(0); }
-}
-
-/* ─── SECTION SPACING ─────────────────────── */
-section { padding: 8rem 6rem; position: relative; }
-
-.section-header { margin-bottom: 4rem; }
-.section-header .label { margin-bottom: 1rem; display: block; }
-.section-header .display { font-size: clamp(2.25rem, 3.5vw, 3.5rem); }
-
-/* ─── ROOMS — Asymmetric Grid ─────────────── */
-.rooms-section { background: var(--espresso); }
-
-.rooms-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  grid-template-rows: auto auto;
-  gap: 1.5rem;
-}
-
-.room-card {
-  position: relative;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  transition: transform 0.5s var(--ease-out-expo), border-color 0.4s;
-  cursor: pointer;
-  aspect-ratio: auto;
-}
-
-.room-card:hover {
-  transform: scale(1.03);
-  border-color: var(--copper);
-}
-
-.room-card:first-child { grid-row: 1 / 3; }
-
-.room-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.8s var(--ease-out-expo);
-  min-height: 280px;
-}
-
-.room-card:first-child img { min-height: 580px; }
-
-.room-card:hover img { transform: scale(1.06); }
-
-.room-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2.5rem 2rem;
-  background: linear-gradient(to top,
-    rgba(15, 13, 9, 0.95) 0%,
-    rgba(15, 13, 9, 0.6) 60%,
-    transparent 100%);
-}
-
-.room-name {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.75rem;
-  font-weight: 400;
-  color: var(--cream);
-  margin-bottom: 0.25rem;
-  letter-spacing: -0.01em;
-}
-
-.room-desc {
-  font-size: 0.8125rem;
-  color: var(--cream-muted);
-  font-weight: 300;
-}
-
-.room-card:first-child .room-name { font-size: 2.25rem; }
-
-/* ─── QUOTE BAND ──────────────────────────── */
-.quote-band {
-  padding: 6rem;
-  text-align: center;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--espresso-deep);
-  position: relative;
-}
-
-.quote-text {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-  font-weight: 300;
-  color: var(--cream);
-  max-width: 900px;
-  margin: 0 auto 1.5rem;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-}
-
-.quote-attr {
-  font-size: 0.75rem;
-  color: var(--copper);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-}
-
-/* ─── SPLIT SECTIONS (Kulinarik / Geschichte) */
-.split-section {
-  display: grid;
-  grid-template-columns: 40fr 60fr;
-  gap: 0;
-  min-height: 80vh;
-  padding: 0;
-}
-
-.split-section.reversed { grid-template-columns: 60fr 40fr; }
-
-.split-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 6rem;
-}
-
-.split-content .label {
-  margin-bottom: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.split-content .label::before {
-  content: '';
-  width: 1.5rem;
-  height: 1px;
-  background: var(--copper);
-}
-
-.split-content .display {
-  font-size: clamp(2rem, 3vw, 3rem);
-  margin-bottom: 1.5rem;
-}
-
-.split-content p {
-  font-size: 1rem;
-  color: var(--cream-dim);
-  line-height: 1.8;
-  max-width: 460px;
-  font-weight: 300;
-  margin-bottom: 2rem;
-}
-
-.split-image { position: relative; overflow: hidden; }
-
-.split-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.split-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, var(--espresso-deep) 0%, transparent 15%);
-  pointer-events: none;
-}
-
-.split-section.reversed .split-image::after {
-  background: linear-gradient(to left, var(--espresso-deep) 0%, transparent 15%);
-}
-
-/* Feature list */
-.features {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-  margin-bottom: 2rem;
-}
-
-.features li {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.9375rem;
-  color: var(--cream-dim);
-  font-weight: 300;
-}
-
-.features li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--copper);
-  flex-shrink: 0;
-}
-
-/* ─── RESERVATION ─────────────────────────── */
-.reservation {
-  background: var(--espresso);
-  border-top: 1px solid var(--border);
-}
-
-.reservation-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-
-.res-left .label { display: block; margin-bottom: 1.25rem; }
-
-.res-phone {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 4vw, 4rem);
-  font-weight: 300;
-  color: var(--copper);
-  text-decoration: none;
-  letter-spacing: -0.02em;
-  display: block;
-  margin-bottom: 2rem;
-  transition: text-shadow 0.3s;
-}
-
-.res-phone:hover { text-shadow: 0 0 40px rgba(184, 115, 51, 0.3); }
-
-.res-address {
-  font-size: 1rem;
-  color: var(--cream-dim);
-  line-height: 1.8;
-  font-weight: 300;
-  margin-bottom: 2.5rem;
-}
-
-.hours-block { margin-bottom: 2rem; }
-
-.hours-title {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: var(--cream);
-}
-
-.hours-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25rem 1.5rem;
-  font-size: 0.875rem;
-  color: var(--cream-dim);
-  font-weight: 300;
-}
-
-.hours-grid .day { color: var(--cream-muted); }
-
-.res-map {
-  width: 100%;
-  height: 100%;
-  min-height: 450px;
-  border: 1px solid var(--border);
-  filter: grayscale(0.6) brightness(0.7) contrast(1.2);
-  transition: filter 0.5s;
-}
-
-.res-map:hover { filter: grayscale(0.2) brightness(0.85) contrast(1.1); }
-
-/* ─── FOOTER ──────────────────────────────── */
-.footer {
-  padding: 4rem 6rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--espresso-deep);
-}
-
-.footer-logo {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.125rem;
-  color: var(--copper);
-}
-
-.footer-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 0.8125rem;
-  color: var(--cream-muted);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.footer-links a:hover { color: var(--cream); }
-
-.footer-social {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.footer-social a {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border);
-  color: var(--cream-muted);
-  text-decoration: none;
-  font-size: 0.8125rem;
-  transition: border-color 0.3s, color 0.3s;
-}
-
-.footer-social a:hover {
-  border-color: var(--copper);
-  color: var(--copper);
-}
-
-.footer-copy {
-  font-size: 0.75rem;
-  color: var(--cream-muted);
-  text-align: center;
-  padding: 1.5rem 6rem;
-  border-top: 1px solid var(--border);
-  background: var(--espresso-deep);
-}
-
-/* ─── RATING BADGE ────────────────────────── */
-.rating-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.625rem 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  margin-bottom: 2rem;
-}
-
-.rating-stars { color: var(--copper); font-size: 0.875rem; letter-spacing: 0.05em; }
-.rating-text { font-size: 0.75rem; color: var(--cream-muted); }
-
-/* ─── SCROLL ANIMATIONS ──────────────────── */
-/* Scroll animations — content ALWAYS visible by default, animations only enhance */
-.scroll-reveal, .room-card { opacity: 1; transform: none; }
-
-@supports (animation-timeline: view()) {
-  .parallax-img {
-    animation: parallaxShift linear both;
-    animation-timeline: view();
-    animation-range: cover 0% cover 100%;
-  }
-
-  @keyframes parallaxShift {
-    from { transform: translateY(-3%); }
-    to   { transform: translateY(3%); }
-  }
-}
-
-/* ─── MOBILE STICKY CTA ──────────────────── */
-.mobile-cta {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-  padding: 1rem 1.5rem;
-  background: rgba(15, 13, 9, 0.95);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid var(--border);
-}
-
-.mobile-cta a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  width: 100%;
-  padding: 0.875rem;
-  background: var(--copper);
-  color: var(--espresso);
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-}
-
-/* ─── COOKIE BANNER ──────────────────────── */
-.cookie-banner {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  max-width: 420px;
-  z-index: 200;
-  background: var(--espresso);
-  border: 1px solid var(--border);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  backdrop-filter: blur(20px);
-}
-
-.cookie-banner p {
-  font-size: 0.8125rem;
-  color: var(--cream-dim);
-  line-height: 1.6;
-  font-weight: 300;
-}
-
-.cookie-actions { display: flex; gap: 0.75rem; }
-
-.cookie-accept {
-  padding: 0.5rem 1.25rem;
-  background: var(--copper);
-  color: var(--espresso);
-  border: none;
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: box-shadow 0.3s;
-}
-
-.cookie-accept:hover { box-shadow: 0 0 20px rgba(184, 115, 51, 0.3); }
-
-.cookie-decline {
-  padding: 0.5rem 1.25rem;
-  background: transparent;
-  color: var(--cream-muted);
-  border: 1px solid var(--border);
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color 0.3s;
-}
-
-.cookie-decline:hover { border-color: var(--cream-muted); }
-
-.cookie-banner.hidden { display: none; }
-
-/* ─── RESPONSIVE ──────────────────────────── */
-@media (max-width: 1024px) {
-  section { padding: 5rem 3rem; }
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-content { padding: 7rem 3rem 3rem; }
-  .hero-image { height: 50vh; }
-  .hero-image::after {
-    background: linear-gradient(to top, var(--espresso-deep) 5%, transparent 40%);
-  }
-  .rooms-grid { grid-template-columns: 1fr; }
-  .room-card:first-child { grid-row: auto; }
-  .room-card:first-child img { min-height: 320px; }
-  .split-section, .split-section.reversed { grid-template-columns: 1fr; }
-  .split-image { height: 50vh; order: -1; }
-  .split-content { padding: 4rem 3rem; }
-  .reservation-grid { grid-template-columns: 1fr; }
-  .footer { flex-direction: column; gap: 2rem; text-align: center; padding: 3rem; }
-  .nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .mobile-cta { display: block; }
-  .cookie-banner { bottom: 5rem; }
-}
-
-@media (max-width: 640px) {
-  section { padding: 4rem 1.5rem; }
-  .hero-content { padding: 6rem 1.5rem 2rem; }
-  .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-  .stat-value { font-size: 1.75rem; }
-  .split-content { padding: 3rem 1.5rem; }
-  .res-phone { font-size: 2rem; }
-  .quote-band { padding: 4rem 1.5rem; }
-  .footer-copy { padding: 1.5rem; }
-}
-
-/* ─── GRAIN TEXTURE ───────────────────────── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px;
-}
-
-/* ─── DECORATIVE LINE ─────────────────────── */
-.deco-line {
-  width: 60px;
-  height: 1px;
-  background: var(--copper);
-  margin: 2rem 0;
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFAF8;--bg-alt:#F2F0EC;--bg-warm:#EDE8E0;
+  --text:#1A1A18;--text-soft:#4A4A46;--text-muted:#8A8A84;
+  --accent:#8B6914;--accent-hover:#7A5C10;--accent-light:#D4B86A;
+  --border:rgba(0,0,0,0.06);--border-hover:rgba(0,0,0,0.12);
+  --glass:rgba(255,255,255,0.7);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(139,105,20,0.15)}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ═══ NAV ═══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all .5s var(--ease);border-bottom:1px solid transparent}
+.nav.scrolled{background:var(--glass);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom-color:var(--border)}
+.nav-logo{font-family:var(--serif);font-size:1.375rem;font-weight:500;color:var(--accent);letter-spacing:-0.02em}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.8125rem;font-weight:400;color:var(--text-soft);letter-spacing:.02em;transition:color .3s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent);padding:.75rem 2rem;border-radius:2px;transition:all .3s}
+.nav-cta:hover{background:var(--accent-hover);box-shadow:0 4px 20px rgba(139,105,20,.25);transform:translateY(-1px);color:#fff}
+
+/* ═══ HERO ═══ */
+.hero{min-height:100dvh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:8rem 5rem 5rem 6rem}
+.hero-label{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem;font-size:.6875rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.hero-label::before{content:'';width:2rem;height:1px;background:var(--accent)}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.75rem,5vw,4.5rem);font-weight:400;line-height:1.1;letter-spacing:-0.02em;color:var(--text);margin-bottom:1.5rem}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-p{font-size:1.0625rem;color:var(--text-soft);max-width:440px;line-height:1.75;font-weight:300;margin-bottom:2.5rem}
+.hero-ctas{display:flex;align-items:center;gap:1.25rem;margin-bottom:4rem}
+.btn-fill{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--accent);padding:1rem 2.25rem;border-radius:2px;transition:all .3s}
+.btn-fill:hover{background:var(--accent-hover);box-shadow:0 4px 24px rgba(139,105,20,.3);transform:translateY(-2px);color:#fff}
+.btn-outline{font-size:.8125rem;font-weight:400;color:var(--text-soft);padding:.75rem 0;border-bottom:1px solid var(--border);transition:all .3s}
+.btn-outline:hover{color:var(--text);border-color:var(--accent)}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat-num{font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--text);line-height:1;margin-bottom:.25rem}
+.stat-txt{font-size:.6875rem;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase}
+.hero-img{position:relative;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg) 0%,transparent 8%);pointer-events:none}
+
+/* ═══ TRUST BAR ═══ */
+.trust{padding:3rem 6rem;display:flex;align-items:center;justify-content:center;gap:3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-alt)}
+.trust span{font-size:.75rem;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+
+/* ═══ SECTIONS ═══ */
+section{padding:7rem 6rem}
+.section-label{font-size:.6875rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent)}
+.section-h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.25rem);font-weight:400;line-height:1.15;letter-spacing:-0.02em;color:var(--text);margin-bottom:1.25rem}
+.section-h2 em{font-style:italic;color:var(--accent)}
+
+/* ═══ ROOMS GRID ═══ */
+.rooms{background:var(--bg)}
+.rooms-grid{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:auto auto;gap:1.25rem;margin-top:3rem}
+.room{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;border:1px solid var(--border);transition:all .5s var(--ease)}
+.room:hover{border-color:var(--accent);transform:scale(1.015);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.room:first-child{grid-row:1/3}
+.room img{width:100%;height:100%;object-fit:cover;min-height:280px;transition:transform .8s var(--ease)}
+.room:first-child img{min-height:560px}
+.room:hover img{transform:scale(1.04)}
+.room-info{position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.3) 60%,transparent 100%)}
+.room-name{font-family:var(--serif);font-size:1.5rem;font-weight:500;color:#fff;margin-bottom:.25rem}
+.room:first-child .room-name{font-size:2rem}
+.room-sub{font-size:.8125rem;color:rgba(255,255,255,.7);font-weight:300}
+
+/* ═══ QUOTE ═══ */
+.quote{padding:6rem;text-align:center;background:var(--bg-warm);border-radius:0}
+.quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.375rem,2.5vw,2.25rem);font-weight:400;color:var(--text);max-width:800px;margin:0 auto 1.5rem;line-height:1.45}
+.quote cite{font-size:.75rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-style:normal;font-weight:600}
+
+/* ═══ SPLIT SECTIONS ═══ */
+.split{display:grid;grid-template-columns:45fr 55fr;gap:0;min-height:70vh;padding:0}
+.split.rev{grid-template-columns:55fr 45fr}
+.split-text{display:flex;flex-direction:column;justify-content:center;padding:5rem 5rem 5rem 6rem}
+.split.rev .split-text{padding:5rem 6rem 5rem 5rem}
+.split-text p{font-size:1rem;color:var(--text-soft);line-height:1.8;max-width:440px;font-weight:300;margin-bottom:2rem}
+.split-img{position:relative;overflow:hidden}
+.split-img img{width:100%;height:100%;object-fit:cover}
+.features{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+.features li{display:flex;align-items:center;gap:.75rem;font-size:.9375rem;color:var(--text-soft);font-weight:300}
+.features li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+/* ═══ RESERVATION ═══ */
+.reservation{background:var(--bg-alt);border-top:1px solid var(--border)}
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+.res-phone{font-family:var(--serif);font-size:clamp(2.25rem,3.5vw,3.5rem);font-weight:400;color:var(--accent);display:block;margin-bottom:1.5rem;transition:opacity .3s}
+.res-phone:hover{opacity:.75}
+.res-addr{font-size:1rem;color:var(--text-soft);line-height:1.8;font-weight:300;margin-bottom:2rem}
+.hours-block{margin-bottom:1.5rem}
+.hours-title{font-family:var(--serif);font-size:1.125rem;margin-bottom:.5rem;color:var(--text)}
+.hours-grid{display:grid;grid-template-columns:auto 1fr;gap:.125rem 1.25rem;font-size:.875rem;color:var(--text-soft);font-weight:300}
+.hours-grid .d{color:var(--text-muted);font-weight:400}
+.res-map{width:100%;height:100%;min-height:420px;border:1px solid var(--border);border-radius:4px;filter:saturate(.85);transition:filter .4s}
+.res-map:hover{filter:saturate(1)}
+
+/* ═══ FOOTER ═══ */
+.footer{padding:3rem 6rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+.footer-logo{font-family:var(--serif);font-size:1rem;color:var(--accent)}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{font-size:.8125rem;color:var(--text-muted);transition:color .3s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:.75rem;color:var(--text-muted);text-align:center;padding:1.5rem 6rem;border-top:1px solid var(--border)}
+
+/* ═══ RATING ═══ */
+.rating{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:var(--bg-alt);border:1px solid var(--border);border-radius:2px;margin-top:1rem}
+.rating-stars{color:var(--accent);font-size:.875rem}
+.rating-text{font-size:.75rem;color:var(--text-muted)}
+
+/* ═══ MOBILE CTA ═══ */
+.m-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:1rem 1.5rem;background:var(--glass);backdrop-filter:blur(16px);border-top:1px solid var(--border)}
+.m-cta a{display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;padding:.875rem;background:var(--accent);color:#fff;font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border-radius:2px}
+
+/* ═══ COOKIE ═══ */
+.cookie{position:fixed;bottom:1.5rem;left:1.5rem;max-width:380px;z-index:200;background:var(--glass);backdrop-filter:blur(20px);border:1px solid var(--border);padding:1.25rem;border-radius:4px}
+.cookie p{font-size:.8125rem;color:var(--text-soft);line-height:1.5;margin-bottom:.75rem}
+.cookie-btns{display:flex;gap:.5rem}
+.cookie-btns button{padding:.4rem 1rem;font-family:var(--sans);font-size:.75rem;font-weight:500;border-radius:2px;cursor:pointer;transition:all .2s}
+.cookie-ok{background:var(--accent);color:#fff;border:none}
+.cookie-ok:hover{background:var(--accent-hover)}
+.cookie-no{background:transparent;color:var(--text-muted);border:1px solid var(--border)}
+.cookie.hide{display:none}
+
+/* ═══ GSAP REVEAL ═══ */
+.reveal{opacity:1;transform:translateY(0)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  section{padding:4rem 2.5rem}
+  .nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-content{padding:7rem 2.5rem 3rem}
+  .hero-img{height:50vh}
+  .hero-img::after{background:linear-gradient(to top,var(--bg) 3%,transparent 30%)}
+  .rooms-grid{grid-template-columns:1fr}
+  .room:first-child{grid-row:auto}
+  .room:first-child img{min-height:300px}
+  .split,.split.rev{grid-template-columns:1fr}
+  .split-img{height:45vh;order:-1}
+  .split-text{padding:3rem 2.5rem}
+  .res-grid{grid-template-columns:1fr}
+  .footer{flex-direction:column;gap:1.5rem;text-align:center;padding:2.5rem}
+  .trust{flex-wrap:wrap;padding:2rem;gap:1.5rem}
+  .m-cta{display:block}
+  .cookie{bottom:5rem}
+  .quote{padding:4rem 2rem}
+}
+@media(max-width:640px){
+  .hero-content{padding:6rem 1.5rem 2rem}
+  .stat-num{font-size:1.5rem}
+  section{padding:3rem 1.5rem}
+  .res-phone{font-size:1.75rem}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">Auerbachs Keller</a>
   <ul class="nav-links">
-    <li><a href="#raeume">Die Raeume</a></li>
+    <li><a href="#raeume">Die Räume</a></li>
     <li><a href="#kulinarik">Kulinarik</a></li>
     <li><a href="#geschichte">Geschichte</a></li>
-    <li><a href="#reservierung">Kontakt</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
     <li><a href="tel:+493412161000" class="nav-cta">Reservieren</a></li>
   </ul>
 </nav>
 
-<!-- HERO — 55/45 Asymmetric Split -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-label">
-      <span class="label">Seit 1525 &middot; Leipzig</span>
-    </div>
-    <h1 class="display hero-headline">Wo Goethe<br>den <em>Faust</em> schrieb</h1>
-    <p class="hero-body">Im Herzen der Maedler-Passage liegt Deutschlands legendaerstes Restaurant. Seit fuenf Jahrhunderten treffen hier Geschichte, Kulinarik und Kultur aufeinander.</p>
-    <div class="hero-actions">
-      <a href="tel:+493412161000" class="btn-primary">
-        Tisch reservieren
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#raeume" class="btn-ghost">Unsere Raeume entdecken</a>
+    <div class="hero-label">Seit 1525 · Leipzig</div>
+    <h1 class="hero-h1">Wo Goethe den<br><em>Faust</em> schrieb</h1>
+    <p class="hero-p">Im Herzen der Mädler-Passage liegt Deutschlands legendärstes Restaurant. Seit fünf Jahrhunderten treffen hier Geschichte, Kulinarik und Kultur aufeinander.</p>
+    <div class="hero-ctas">
+      <a href="tel:+493412161000" class="btn-fill">Tisch reservieren →</a>
+      <a href="#raeume" class="btn-outline">Unsere Räume entdecken</a>
     </div>
     <div class="hero-stats">
-      <div>
-        <div class="stat-value">1525</div>
-        <div class="stat-label">Gegruendet</div>
-      </div>
-      <div>
-        <div class="stat-value">4.4</div>
-        <div class="stat-label">Google Bewertung</div>
-      </div>
-      <div>
-        <div class="stat-value">9.511</div>
-        <div class="stat-label">Bewertungen</div>
-      </div>
+      <div><div class="stat-num">1525</div><div class="stat-txt">Gegründet</div></div>
+      <div><div class="stat-num">4.4</div><div class="stat-txt">Google Bewertung</div></div>
+      <div><div class="stat-num">9.511</div><div class="stat-txt">Bewertungen</div></div>
     </div>
   </div>
-  <div class="hero-image">
-    <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1920&h=1280&fit=crop&q=85" alt="Auerbachs Keller — Historisches Weinkellergewoelbe" loading="eager">
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1920&h=1280&fit=crop&q=85" alt="Historisches Weinkellergewölbe mit warmer Beleuchtung">
   </div>
 </section>
 
-<!-- ROOMS — Asymmetric Grid -->
-<section class="rooms-section" id="raeume">
-  <div class="section-header scroll-reveal">
-    <span class="label">Unser Haus</span>
-    <h2 class="display">Drei Welten,<br>ein <em>Keller</em></h2>
-  </div>
-  <div class="rooms-grid">
-    <div class="room-card">
-      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=1200&fit=crop&q=85" alt="Grosser Keller — Elegantes Fine Dining" class="parallax-img">
-      <div class="room-overlay">
-        <div class="label" style="margin-bottom:0.5rem">Bis 280 Gaeste</div>
-        <div class="room-name">Grosser Keller</div>
-        <div class="room-desc">Saechsische Kueche unter historischen Gewoelben. Das Herzstueck seit 1525.</div>
-      </div>
-    </div>
-    <div class="room-card">
-      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&h=1200&fit=crop&q=85" alt="Historische Weinstuben — Weinfaesser und Tradition" class="parallax-img">
-      <div class="room-overlay">
-        <div class="label" style="margin-bottom:0.5rem">Exklusiv</div>
-        <div class="room-name">Historische Weinstuben</div>
-        <div class="room-desc">Wo Goethe sass. Feine Kueche im Faust-Ambiente.</div>
-      </div>
-    </div>
-    <div class="room-card">
-      <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&h=1200&fit=crop&q=85" alt="Mephisto Bar — Cocktails im Kerzenlicht" class="parallax-img">
-      <div class="room-overlay">
-        <div class="label" style="margin-bottom:0.5rem">Bar &amp; Lounge</div>
-        <div class="room-name">Mephisto Bar</div>
-        <div class="room-desc">Cocktails und Weine in teuflisch guter Atmosphaere.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- QUOTE BAND -->
-<div class="quote-band scroll-reveal">
-  <blockquote class="quote-text">&bdquo;Wer nach Leipzig zur Messe gereist, ohne in Auerbachs Keller zu gehen, der schweige still.&ldquo;</blockquote>
-  <cite class="quote-attr">Sprichwort, ueberliefert seit dem 18. Jahrhundert</cite>
+<!-- TRUST BAR -->
+<div class="trust">
+  <span>★ 4.4 Google Rating</span>
+  <span>·</span>
+  <span>9.511 Bewertungen</span>
+  <span>·</span>
+  <span>Seit 1525</span>
+  <span>·</span>
+  <span>Mädler-Passage Leipzig</span>
 </div>
 
-<!-- KULINARIK — 40/60 Split -->
-<section class="split-section" id="kulinarik">
-  <div class="split-content scroll-reveal">
-    <span class="label">Kulinarik</span>
-    <h2 class="display">Tradition<br>trifft <em>Handwerk</em></h2>
-    <p>Unsere Kueche verbindet saechsische Klassiker mit modernem Handwerk. Regionale Zutaten, saisonale Karten und eine Weinkarte, die ihresgleichen sucht.</p>
-    <ul class="features">
-      <li>Saisonale Speisekarte mit regionalen Zutaten</li>
-      <li>Ueber 300 Weine aus aller Welt</li>
-      <li>Saechsische Spezialitaeten neu interpretiert</li>
-      <li>Vegetarische und vegane Optionen</li>
-    </ul>
-    <a href="tel:+493412161000" class="btn-primary">
-      Tisch reservieren
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-  <div class="split-image">
-    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&h=1280&fit=crop&q=85" alt="Kulinarik — Perfekt angerichtetes Fine Dining" class="parallax-img">
-  </div>
-</section>
-
-<!-- GESCHICHTE — 60/40 Reversed -->
-<section class="split-section reversed" id="geschichte">
-  <div class="split-image">
-    <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1920&h=1280&fit=crop&q=85&crop=bottom" alt="Historisches Kellergewoelbe — 500 Jahre Geschichte" class="parallax-img">
-  </div>
-  <div class="split-content scroll-reveal">
-    <span class="label">Geschichte</span>
-    <h2 class="display">Fuenf Jahrhunderte<br><em>Legende</em></h2>
-    <p>1525 von Stadtrat Heinrich Stromer gegruendet, wurde der Keller zum Treffpunkt von Gelehrten, Kuenstlern und Kaufleuten. Johann Wolfgang von Goethe war Stammgast und setzte dem Ort mit seiner Szene in Faust ein literarisches Denkmal.</p>
-    <ul class="features">
-      <li>Gegruendet 1525 — aeltestes Restaurant Leipzigs</li>
-      <li>Goethe schrieb hier die Kellerszene im Faust</li>
-      <li>Historische Gewoelbe unter der Maedler-Passage</li>
-      <li>UNESCO-Weltkulturerbe-Kandidat</li>
-    </ul>
-    <div class="deco-line"></div>
-    <div class="rating-badge">
-      <span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
-      <span class="rating-text">4.4 von 5 &middot; 9.511 Google-Bewertungen</span>
+<!-- RÄUME -->
+<section class="rooms" id="raeume">
+  <div class="section-label">Unser Haus</div>
+  <h2 class="section-h2">Drei Welten,<br>ein <em>Keller</em></h2>
+  <div class="rooms-grid">
+    <div class="room reveal">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=1200&fit=crop&q=85" alt="Großer Keller — Elegantes Fine Dining">
+      <div class="room-info">
+        <div class="room-name">Großer Keller</div>
+        <div class="room-sub">Sächsische Küche unter historischen Gewölben — bis 280 Gäste</div>
+      </div>
+    </div>
+    <div class="room reveal">
+      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&h=1200&fit=crop&q=85" alt="Historische Weinstuben">
+      <div class="room-info">
+        <div class="room-name">Historische Weinstuben</div>
+        <div class="room-sub">Wo Goethe saß — feine Küche im Faust-Ambiente</div>
+      </div>
+    </div>
+    <div class="room reveal">
+      <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&h=1200&fit=crop&q=85" alt="Mephisto Bar">
+      <div class="room-info">
+        <div class="room-name">Mephisto Bar</div>
+        <div class="room-sub">Cocktails und Weine in teuflisch guter Atmosphäre</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RESERVATION -->
-<section class="reservation" id="reservierung">
-  <div class="section-header scroll-reveal">
-    <span class="label">Reservierung &amp; Kontakt</span>
-    <h2 class="display">Ihr Tisch<br><em>wartet</em></h2>
+<!-- QUOTE -->
+<div class="quote reveal">
+  <blockquote>„Wer nach Leipzig zur Messe gereist, ohne in Auerbachs Keller zu gehen, der schweige still."</blockquote>
+  <cite>Sprichwort, überliefert seit dem 18. Jahrhundert</cite>
+</div>
+
+<!-- KULINARIK -->
+<section class="split" id="kulinarik">
+  <div class="split-text reveal">
+    <div class="section-label">Kulinarik</div>
+    <h2 class="section-h2">Tradition<br>trifft <em>Handwerk</em></h2>
+    <p>Unsere Küche verbindet sächsische Klassiker mit modernem Handwerk. Regionale Zutaten, saisonale Karten und eine Weinkarte, die ihresgleichen sucht.</p>
+    <ul class="features">
+      <li>Saisonale Speisekarte mit regionalen Zutaten</li>
+      <li>Über 300 Weine aus aller Welt</li>
+      <li>Sächsische Spezialitäten neu interpretiert</li>
+      <li>Vegetarische und vegane Optionen</li>
+    </ul>
+    <a href="tel:+493412161000" class="btn-fill">Tisch reservieren →</a>
   </div>
-  <div class="reservation-grid">
-    <div class="res-left scroll-reveal">
-      <span class="label">Telefonisch reservieren</span>
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&h=1280&fit=crop&q=85" alt="Perfekt angerichtetes Fine Dining Gericht">
+  </div>
+</section>
+
+<!-- GESCHICHTE -->
+<section class="split rev" id="geschichte">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1920&h=1280&fit=crop&q=85&crop=bottom" alt="Historisches Kellergewölbe">
+  </div>
+  <div class="split-text reveal">
+    <div class="section-label">Geschichte</div>
+    <h2 class="section-h2">Fünf Jahrhunderte<br><em>Legende</em></h2>
+    <p>1525 von Stadtrat Heinrich Stromer gegründet, wurde der Keller zum Treffpunkt von Gelehrten, Künstlern und Kaufleuten. Goethe war Stammgast und setzte dem Ort mit seiner Szene in Faust ein literarisches Denkmal.</p>
+    <ul class="features">
+      <li>Gegründet 1525 — ältestes Restaurant Leipzigs</li>
+      <li>Goethe schrieb hier die Kellerszene im Faust</li>
+      <li>Historische Gewölbe unter der Mädler-Passage</li>
+    </ul>
+    <div class="rating">
+      <span class="rating-stars">★★★★☆</span>
+      <span class="rating-text">4.4 von 5 · 9.511 Google-Bewertungen</span>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="reservation" id="kontakt">
+  <div class="section-label">Reservierung & Kontakt</div>
+  <h2 class="section-h2">Ihr Tisch <em>wartet</em></h2>
+  <div class="res-grid">
+    <div class="reveal">
       <a href="tel:+493412161000" class="res-phone">0341 216 100</a>
-      <div class="res-address">Maedler-Passage<br>Grimmaische Str. 2–4<br>04109 Leipzig</div>
+      <div class="res-addr">Mädler-Passage<br>Grimmaische Str. 2–4<br>04109 Leipzig</div>
       <div class="hours-block">
-        <div class="hours-title">Grosser Keller</div>
+        <div class="hours-title">Großer Keller</div>
         <div class="hours-grid">
-          <span class="day">Mo</span><span>12:00 – 22:00</span>
-          <span class="day">Di – Mi</span><span>17:00 – 22:00</span>
-          <span class="day">Do</span><span>12:00 – 22:00</span>
-          <span class="day">Fr – Sa</span><span>12:00 – 23:00</span>
-          <span class="day">So</span><span>12:00 – 22:00</span>
+          <span class="d">Mo</span><span>12:00 – 22:00 Uhr</span>
+          <span class="d">Di – Mi</span><span>17:00 – 22:00 Uhr</span>
+          <span class="d">Do</span><span>12:00 – 22:00 Uhr</span>
+          <span class="d">Fr – Sa</span><span>12:00 – 23:00 Uhr</span>
+          <span class="d">So</span><span>12:00 – 22:00 Uhr</span>
         </div>
       </div>
       <div class="hours-block">
         <div class="hours-title">Mephisto Bar</div>
         <div class="hours-grid">
-          <span class="day">Mo – Do</span><span>12:00 – 22:00</span>
-          <span class="day">Fr – Sa</span><span>12:00 – 24:00</span>
-          <span class="day">So</span><span>12:00 – 18:00</span>
+          <span class="d">Mo – Do</span><span>12:00 – 22:00 Uhr</span>
+          <span class="d">Fr – Sa</span><span>12:00 – 24:00 Uhr</span>
+          <span class="d">So</span><span>12:00 – 18:00 Uhr</span>
         </div>
       </div>
     </div>
-    <div class="res-map-wrap scroll-reveal">
-      <iframe class="res-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.8!2d12.3747!3d51.3397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6f818fbfb0e45%3A0xbe8e02e29bffd37c!2sAuerbachs%20Keller!5e0!3m2!1sde!2sde!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Auerbachs Keller auf Google Maps"></iframe>
+    <div class="reveal">
+      <iframe class="res-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.8!2d12.3747!3d51.3397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6f818fbfb0e45%3A0xbe8e02e29bffd37c!2sAuerbachs%20Keller!5e0!3m2!1sde!2sde!4v1" allowfullscreen loading="lazy" title="Auerbachs Keller auf Google Maps"></iframe>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-logo">Auerbachs Keller</div>
   <ul class="footer-links">
-    <li><a href="#raeume">Raeume</a></li>
+    <li><a href="#raeume">Räume</a></li>
     <li><a href="#kulinarik">Kulinarik</a></li>
     <li><a href="#geschichte">Geschichte</a></li>
-    <li><a href="#reservierung">Kontakt</a></li>
-    <li><a href="https://www.auerbachs-keller-leipzig.de/de/impressum" target="_blank" rel="noopener">Impressum</a></li>
-    <li><a href="https://www.auerbachs-keller-leipzig.de/de/datenschutz" target="_blank" rel="noopener">Datenschutz</a></li>
+    <li><a href="https://www.instagram.com/auerbachskeller.leipzig" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/AuerbachsKellerLeipzig" target="_blank" rel="noopener">Facebook</a></li>
   </ul>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/auerbachskeller.leipzig" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-    <a href="https://www.facebook.com/AuerbachsKellerLeipzig" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
-  </div>
 </footer>
-<div class="footer-copy">&copy; 2025 Auerbachs Keller Leipzig. Alle Rechte vorbehalten.</div>
+<div class="footer-copy">© 2025 Auerbachs Keller Leipzig. Alle Rechte vorbehalten.</div>
 
-<!-- MOBILE STICKY CTA -->
-<div class="mobile-cta">
-  <a href="tel:+493412161000">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    Jetzt reservieren — 0341 216 100
-  </a>
+<div class="m-cta">
+  <a href="tel:+493412161000">Jetzt reservieren — 0341 216 100</a>
 </div>
 
-<!-- COOKIE BANNER -->
-<div class="cookie-banner" id="cookieBanner">
-  <p>Diese Website verwendet Cookies, um Ihnen das bestmoegliche Erlebnis zu bieten.</p>
-  <div class="cookie-actions">
-    <button class="cookie-accept" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Akzeptieren</button>
-    <button class="cookie-decline" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Ablehnen</button>
+<div class="cookie" id="ck">
+  <p>Diese Website verwendet Cookies für das bestmögliche Erlebnis.</p>
+  <div class="cookie-btns">
+    <button class="cookie-ok" onclick="document.getElementById('ck').classList.add('hide')">Akzeptieren</button>
+    <button class="cookie-no" onclick="document.getElementById('ck').classList.add('hide')">Ablehnen</button>
   </div>
 </div>
 
 <script>
-// Nav scroll
-const nav = document.getElementById('nav');
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, { passive: true });
+gsap.registerPlugin(ScrollTrigger);
 
-// Ken Burns on hero
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60)},{passive:true});
+
+// GSAP reveal animations
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.from(el,{
+    y:40,opacity:0,duration:1,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}
+  });
+});
+
+// Room cards stagger
+gsap.utils.toArray('.room').forEach((el,i)=>{
+  gsap.from(el,{
+    y:60,opacity:0,duration:.8,delay:i*.15,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}
+  });
+});
+
+// Hero content stagger
+gsap.from('.hero-label',{y:30,opacity:0,duration:.8,delay:.2,ease:'power3.out'});
+gsap.from('.hero-h1',{y:30,opacity:0,duration:.8,delay:.35,ease:'power3.out'});
+gsap.from('.hero-p',{y:30,opacity:0,duration:.8,delay:.5,ease:'power3.out'});
+gsap.from('.hero-ctas',{y:30,opacity:0,duration:.8,delay:.65,ease:'power3.out'});
+gsap.from('.hero-stats',{y:30,opacity:0,duration:.8,delay:.8,ease:'power3.out'});
+
+// Parallax on hero image
+gsap.to('.hero-img img',{
+  yPercent:-10,ease:'none',
+  scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}
+});
+
+// Split image parallax
+gsap.utils.toArray('.split-img img').forEach(img=>{
+  gsap.to(img,{
+    yPercent:-8,ease:'none',
+    scrollTrigger:{trigger:img.parentElement,start:'top bottom',end:'bottom top',scrub:true}
+  });
 });
 </script>
 </body>
