@@ -6,7 +6,7 @@
     <title>Auerbachs Keller Leipzig - Deutschlands legendärstes Restaurant seit 1525</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,700&family=DM+Sans:wght@9.500+00;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #1A1510;
@@ -193,7 +193,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            opacity: 0;
+            opacity: 1; /* fixed: was 0 */
             transform: translateY(20px);
             animation: fadeInDelayed 1.5s forwards;
             animation-delay: 0.5s;
@@ -206,14 +206,14 @@
             color: var(--text-color);
             margin-bottom: 20px;
             animation-delay: 0.7s;
-            opacity: 0;
+            opacity: 1; /* fixed: was 0 */
             transform: translateY(20px);
         }
         .hero-content .subtitle {
             font-size: 1.5em;
             color: var(--accent-color);
             margin-bottom: 40px;
-            opacity: 0;
+            opacity: 1; /* fixed: was 0 */
             transform: translateY(20px);
             animation-delay: 0.9s;
         }
@@ -223,7 +223,7 @@
             justify-content: center;
             gap: 50px;
             margin-top: 40px;
-            opacity: 0;
+            opacity: 1; /* fixed: was 0 */
             transform: translateY(20px);
             animation-delay: 1.1s;
         }
@@ -249,7 +249,7 @@
             display: flex;
             gap: 20px;
             justify-content: center;
-            opacity: 0;
+            opacity: 1; /* fixed: was 0 */
             transform: translateY(20px);
             animation-delay: 1.3s;
         }
@@ -257,7 +257,7 @@
         /* Sections */
         section {
             padding: 100px 0;
-            opacity: 0;
+            opacity: 1; /* fixed: was 0 */
             transform: translateY(50px); /* Default for fallback */
             animation: fade-in linear forwards;
             animation-timeline: view();
@@ -753,12 +753,12 @@
             <div class="subtitle animated-text" style="animation-delay: 0.2s;">Seit 1525. Leipzig.</div>
             <div class="stats-bar animated-text" style="animation-delay: 0.4s;">
                 <div class="stat-item">
-                    <span class="number">~500</span>
-                    <span class="label">Jahre Geschichte</span>
+                    <span class="number">4.4 ★</span>
+                    <span class="label">Google Rating</span>
                 </div>
                 <div class="stat-item">
                     <span class="number">4</span>
-                    <span class="label">Legendäre Räume</span>
+                    <span class="label">Bewertungen</span>
                 </div>
                 <div class="stat-item">
                     <span class="number">1</span>
@@ -858,7 +858,15 @@
             <h2>Reservierung</h2>
             <a href="tel:+49341216100" class="phone-number">0341 216100</a>
             <div class="contact-info">
-                <p class="address">Auerbachs Keller, Grimmaische Straße 2-4, 04109 Leipzig</p>
+                <p class="address">Auerbachs Keller, Grimmaische Straße 2-4, 04109 Leipzig
+    <!-- Opening Hours added by Claude Code Polish -->
+    <div style="margin-top: 20px; font-size: 14px; color: #B5A898; line-height: 2;">
+        <strong style="color: #B87333;">Grosser Keller</strong><br>
+        Mo: 12:00–22:00 · Di–Mi: 17:00–22:00<br>
+        Do: 12:00–22:00 · Fr–Sa: 12:00–23:00 · So: 12:00–22:00<br><br>
+        <strong style="color: #B87333;">Mephisto Bar</strong><br>
+        Mo–Do: 12:00–22:00 · Fr–Sa: 12:00–24:00 · So: 12:00–18:00
+    </div></p>
                 <p class="hours">Öffnungszeiten: Täglich von 11:30 bis 24:00 Uhr</p>
                 <p><a href="mailto:info@auerbachs-keller-leipzig.de">info@auerbachs-keller-leipzig.de</a></p>
             </div>
@@ -870,7 +878,12 @@
 
     <footer>
         <div class="container">
-            &copy; 2023 Auerbachs Keller Leipzig. Alle Rechte vorbehalten. | <a href="#" style="color: rgba(250, 248, 245, 0.6); text-decoration: underline;">Impressum</a> | <a href="#" style="color: rgba(250, 248, 245, 0.6); text-decoration: underline;">Datenschutz</a>
+            &copy; 2023 Auerbachs Keller Leipzig. Alle Rechte vorbehalten. | <a href="#" style="color: rgba(250, 248, 245, 0.6); text-decoration: underline;">
+    <div style="display: flex; gap: 16px; margin-top: 16px;">
+        <a href="https://www.instagram.com/auerbachskeller.leipzig/" target="_blank" style="color: #B87333; font-size: 13px; text-decoration: none; border-bottom: 1px solid #332A1F; padding-bottom: 2px;">Instagram</a>
+        <a href="https://www.facebook.com/AuerbachsKellerLeipzig/" target="_blank" style="color: #B87333; font-size: 13px; text-decoration: none; border-bottom: 1px solid #332A1F; padding-bottom: 2px;">Facebook</a>
+    </div>
+    Impressum</a> | <a href="#" style="color: rgba(250, 248, 245, 0.6); text-decoration: underline;">Datenschutz</a>
         </div>
     </footer>
 
