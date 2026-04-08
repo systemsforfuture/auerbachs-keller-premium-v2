@@ -8,6 +8,7 @@
 <meta property="og:title" content="Auerbachs Keller Leipzig — Seit 1525">
 <meta property="og:description" content="500 Jahre Gastfreundschaft im historischen Gewoelbe. Saechsische Kueche, neu interpretiert.">
 <meta property="og:image" content="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/340_sli_rest-ambiente.jpg">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231A1510'/><text x='16' y='22' text-anchor='middle' fill='%23C4853A' font-size='18' font-family='serif' font-style='italic'>A</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -102,6 +103,61 @@ footer{border-top:1px solid var(--border);padding:36px 0}
 .mob-cta a{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:var(--accent);color:var(--bg);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:6px;width:100%}
 @media(max-width:768px){.mob-cta{display:block}footer{padding-bottom:72px}}
 
+/* ── ANIMATIONS ── */
+
+/* Scroll-reveal: content always visible, animation is enhancement only */
+@keyframes fadeUp { from { opacity:0.15; transform:translateY(32px) } to { opacity:1; transform:translateY(0) } }
+@keyframes fadeScale { from { opacity:0.15; transform:scale(0.97) } to { opacity:1; transform:scale(1) } }
+@keyframes slideLeft { from { opacity:0.15; transform:translateX(-40px) } to { opacity:1; transform:translateX(0) } }
+@keyframes slideRight { from { opacity:0.15; transform:translateX(40px) } to { opacity:1; transform:translateX(0) } }
+
+/* Use CSS scroll-driven animations (Chrome 115+, graceful degradation) */
+@supports (animation-timeline: view()) {
+  .anim-up { animation: fadeUp linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  .anim-scale { animation: fadeScale linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  .anim-left { animation: slideLeft linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  .anim-right { animation: slideRight linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+}
+
+/* Hero text reveal */
+@keyframes heroReveal { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
+.hero-content > * { animation: heroReveal 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-content > *:nth-child(1) { animation-delay: 0.2s }
+.hero-content > *:nth-child(2) { animation-delay: 0.4s }
+.hero-content > *:nth-child(3) { animation-delay: 0.6s }
+.hero-content > *:nth-child(4) { animation-delay: 0.8s }
+.hero-content > *:nth-child(5) { animation-delay: 1.0s }
+
+/* Hero image parallax */
+.hero-bg img { transition: transform 0.1s linear; will-change: transform; }
+
+/* Room cards — enhanced hover */
+.room::before { content:''; position:absolute; inset:0; z-index:1; border:1px solid transparent; border-radius:8px; transition: border-color 0.4s; }
+.room:hover::before { border-color: var(--accent); }
+.room-info { transform: translateY(4px); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.room:hover .room-info { transform: translateY(0); }
+
+/* Button hover glow */
+.btn-fill { position:relative; overflow:hidden; }
+.btn-fill::after { content:''; position:absolute; inset:-2px; background:var(--accent); filter:blur(12px); opacity:0; transition:opacity 0.3s; z-index:-1; border-radius:4px; }
+.btn-fill:hover::after { opacity:0.3; }
+
+/* Quote ornament animation */
+.quote-line { transition: width 0.8s cubic-bezier(0.16,1,0.3,1); }
+
+/* Smooth link underlines */
+.nav-links a { position:relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s; }
+.nav-links a:hover::after { width:100%; }
+
+/* Split image hover zoom */
+.split-img img { transition: transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.split-img:hover img { transform: scale(1.03); }
+
+/* Map hover */
+.map-box { transition: border-color 0.3s; }
+.map-box:hover { border-color: var(--accent); }
+
 /* COOKIE */
 .cookie{position:fixed;bottom:12px;left:12px;max-width:400px;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;padding:16px 20px;z-index:200;display:none;font-size:13px;color:var(--text);gap:12px;align-items:center}
 .cookie.show{display:flex}
@@ -152,9 +208,9 @@ footer{border-top:1px solid var(--border);padding:36px 0}
 <!-- DIE RAEUME — echte Bilder von jedem Raum -->
 <section id="raeume">
   <div class="wrap">
-    <div class="label">Unser Haus</div>
-    <h2 class="h2" style="margin-top:12px">Vier Jahrhunderte.<br>Vier Raeume.</h2>
-    <div class="rooms">
+    <div class="label anim-up">Unser Haus</div>
+    <h2 class="h2 anim-up" style="margin-top:12px">Vier Jahrhunderte.<br>Vier Raeume.</h2>
+    <div class="rooms anim-scale">
       <div class="room">
         <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/341_head_grosserkeller.jpg?m=1697553644" alt="Der Grosse Keller — saechsische Kueche im geschichtstraechtigen Gewoelbe" loading="lazy">
         <div class="room-info">
@@ -180,11 +236,17 @@ footer{border-top:1px solid var(--border);padding:36px 0}
   </div>
 </section>
 
+<!-- 3D SPLINE DIVIDER — subtle interactive element -->
+<div style="position:relative;height:200px;overflow:hidden;background:var(--bg-deep);border-top:1px solid var(--border)">
+  <spline-viewer url="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" style="position:absolute;inset:0;opacity:0.25;pointer-events:auto" loading="lazy"></spline-viewer>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,var(--bg) 0%,transparent 30%,transparent 70%,var(--bg-deep) 100%);pointer-events:none"></div>
+</div>
+
 <!-- ZITAT — das echte saechsische Sprichwort -->
 <section class="quote-sec" id="geschichte">
   <div class="wrap">
-    <div class="quote-line"></div>
-    <blockquote class="quote-text">
+    <div class="quote-line anim-up"></div>
+    <blockquote class="quote-text anim-up">
       &bdquo;Wer nach Leipzig zur Messe gereist,<br>ohne in Auerbachs Keller zu gehen,<br>der schweige still.&ldquo;
     </blockquote>
     <div class="quote-attr">Saechsisches Sprichwort, 17. Jahrhundert</div>
@@ -195,14 +257,14 @@ footer{border-top:1px solid var(--border);padding:36px 0}
 <section id="kulinarik">
   <div class="wrap">
     <div class="split">
-      <div>
+      <div class="anim-left">
         <div class="label">Kulinarik</div>
         <h2 class="h2" style="margin-top:12px;margin-bottom:20px">Saechsische Kueche.<br>Neu interpretiert.</h2>
         <p class="body-lg" style="margin-bottom:12px">Entdecken Sie eine harmonische Auswahl an regionalen Koestlichkeiten und internationalen Spezialitaeten — von kulinarischen Meisterwerken als 3- oder 4-Gaenge Menue bis zum stilvoll praesentierten Buffet.</p>
         <p class="body-lg" style="margin-bottom:32px">Im Grossen Keller, den Salons Helena und Maedler oder in den Historischen Weinstuben.</p>
         <a href="https://www.auerbachs-keller-leipzig.de/de/speisen/a-la-carte/vorspeisen.php" target="_blank" class="btn btn-line">Speisekarte ansehen →</a>
       </div>
-      <div class="split-img">
+      <div class="split-img anim-right">
         <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/7/454_sli_rest-kulinarik.jpg?m=1697553102" alt="Kulinarische Koestlichkeiten im Auerbachs Keller" loading="lazy" class="img-cover">
       </div>
     </div>
@@ -213,10 +275,10 @@ footer{border-top:1px solid var(--border);padding:36px 0}
 <section style="padding-top:0">
   <div class="wrap">
     <div class="split split-rev">
-      <div class="split-img">
+      <div class="split-img anim-left">
         <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/134_auerbachskeller.jpg?m=1697553644" alt="Historische Szene im Fasskeller — Mephisto, Fasskellermeister, Faust-Gemaelde im Hintergrund" loading="lazy" class="img-cover">
       </div>
-      <div>
+      <div class="anim-right">
         <div class="label">500 Jahre Geschichte</div>
         <h2 class="h2" style="margin-top:12px;margin-bottom:20px">Goethe. Luther.<br>Und Sie.</h2>
         <p class="body-lg" style="margin-bottom:16px">Johann Wolfgang von Goethe verewigte den Keller in seinem Faust — die Szene &bdquo;Auerbachs Keller in Leipzig&ldquo; machte das Restaurant weltberuehmt.</p>
@@ -286,9 +348,16 @@ footer{border-top:1px solid var(--border);padding:36px 0}
 </div>
 
 <script>
-// Sticky nav on scroll
+// Sticky nav + hero parallax
 const n=document.getElementById('nav');
-window.addEventListener('scroll',()=>n.classList.toggle('scrolled',window.scrollY>60));
+const heroImg=document.querySelector('.hero-bg img');
+window.addEventListener('scroll',()=>{
+  n.classList.toggle('scrolled',window.scrollY>60);
+  // Parallax: image moves slower than scroll (factor 0.3)
+  if(heroImg&&window.scrollY<window.innerHeight){
+    heroImg.style.transform='translateY('+window.scrollY*0.3+'px) scale(1.1)';
+  }
+},{passive:true});
 </script>
 </body>
 </html>
