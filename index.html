@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Auerbachs Keller Leipzig — Seit 1525</title>
+<meta name="description" content="Deutschlands berühmtestes Kellerrestaurant. Seit 1525 in der Mädler-Passage Leipzig. Wo Goethe den Faust schrieb. Reservierung: 0341 216100">
+<meta property="og:title" content="Auerbachs Keller Leipzig — Seit 1525">
+<meta property="og:description" content="500 Jahre Gastfreundschaft im historischen Gewölbe. Sächsische Küche, neu interpretiert.">
+<meta property="og:image" content="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/134_auerbachskeller.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%231A1510'/><text x='16' y='21' text-anchor='middle' fill='%23B87333' font-size='16' font-family='serif'>A</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #1A1510; --bg-alt: #211C15; --bg-card: #262016;
+  --accent: #B87333; --accent-hover: #9A5F28; --olive: #6B7B4C;
+  --white: #FAF8F5; --text: #B5A898; --text-muted: #7A6E60; --text-faint: #4D4338;
+  --border: #332A1F;
+  --serif: 'Cormorant Garamond',Georgia,serif;
+  --sans: 'DM Sans',-apple-system,sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}button{border:none;background:none;cursor:pointer;font:inherit}
+::selection{background:rgba(184,115,51,0.25)}
+.container{max-width:1320px;margin:0 auto;padding-inline:clamp(20px,4vw,48px)}
+section{padding-block:clamp(80px,10vw,160px)}
+.label{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent)}
+.h-display{font-family:var(--serif);font-size:clamp(36px,8vw,80px);font-weight:300;line-height:1.05;letter-spacing:-0.02em;font-style:italic}
+.h-section{font-family:var(--serif);font-size:clamp(28px,5vw,56px);font-weight:400;line-height:1.1;letter-spacing:-0.02em}
+.h-sub{font-family:var(--serif);font-size:clamp(20px,3vw,32px);font-weight:400;font-style:italic;line-height:1.2}
+.body-lg{font-size:clamp(16px,1.2vw,19px);color:var(--text);line-height:1.7}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--accent);color:var(--bg);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;border-radius:6px;transition:all .3s}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:transparent;color:var(--white);font-size:12px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border);border-radius:6px;transition:all .3s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .4s}
+.nav.scrolled{background:rgba(26,21,16,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.nav-brand{font-family:var(--serif);font-size:20px;font-weight:400;font-style:italic;color:var(--accent)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:13px;font-weight:400;color:var(--text-muted);transition:color .3s;letter-spacing:0.02em}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{padding:10px 24px;background:var(--accent);color:var(--bg);font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:6px;transition:all .3s}
+.nav-cta:hover{background:var(--accent-hover)}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px}
+.hero-grid{display:grid;grid-template-columns:55fr 45fr;gap:clamp(32px,4vw,64px);align-items:center}
+.hero-content{display:flex;flex-direction:column;gap:24px}
+.hero-img{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;max-height:70vh}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,16,0.6) 0%,transparent 40%)}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.stats-bar{display:flex;gap:0;margin-top:32px;border-top:1px solid var(--border);padding-top:24px}
+.stat{flex:1;text-align:left}
+.stat:not(:last-child){border-right:1px solid var(--border)}
+.stat-num{font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-weight:400;color:var(--white)}
+.stat-label{font-size:11px;color:var(--text-muted);letter-spacing:0.05em;margin-top:4px}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero-img{max-height:50vh;order:-1}}
+
+/* ── ROOMS ── */
+.rooms-grid{display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:auto auto;gap:16px;margin-top:48px}
+.room-card{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.room-card:first-child{grid-row:1/3;aspect-ratio:auto}
+.room-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(0.16,1,0.3,1)}
+.room-card:hover img{transform:scale(1.04)}
+.room-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,21,16,0.85) 0%,rgba(26,21,16,0.1) 50%)}
+.room-info{position:absolute;bottom:0;left:0;right:0;padding:24px;z-index:2}
+.room-name{font-family:var(--serif);font-size:clamp(18px,2vw,24px);font-weight:400;font-style:italic;margin-bottom:4px}
+.room-desc{font-size:13px;color:var(--text);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ── QUOTE ── */
+.quote-section{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center;padding-block:clamp(60px,8vw,120px)}
+.quote-text{font-family:var(--serif);font-size:clamp(22px,4vw,40px);font-weight:300;font-style:italic;line-height:1.35;max-width:800px;margin:0 auto 24px;color:var(--white)}
+.quote-attr{font-size:13px;color:var(--text-muted);letter-spacing:0.05em}
+.ornament{width:40px;height:1px;background:var(--accent);margin:24px auto}
+
+/* ── KULINARIK ── */
+.split{display:grid;grid-template-columns:2fr 3fr;gap:clamp(32px,5vw,80px);align-items:center}
+.split-reverse{grid-template-columns:3fr 2fr}
+.split-img{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.split-img img{width:100%;height:100%;object-fit:cover}
+@media(max-width:768px){.split,.split-reverse{grid-template-columns:1fr}.split-img{order:-1}}
+
+/* ── CONTACT ── */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.contact-phone{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:400;color:var(--accent);font-style:italic;margin:16px 0}
+.contact-phone a{color:var(--accent);transition:opacity .3s}
+.contact-phone a:hover{opacity:0.8}
+.contact-detail{font-size:14px;color:var(--text);line-height:2}
+.map-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(0.3) contrast(1.1)}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:40px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-brand{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:16px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:12px;color:var(--text-muted);transition:color .3s;letter-spacing:0.02em}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:11px;color:var(--text-faint)}
+
+/* ── MOBILE CTA ── */
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:12px 16px;background:rgba(26,21,16,0.95);backdrop-filter:blur(12px);border-top:1px solid var(--border)}
+.mobile-cta a{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;background:var(--accent);color:var(--bg);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:8px;width:100%}
+@media(max-width:768px){.mobile-cta{display:block}footer{padding-bottom:80px}}
+
+/* ── SCROLL REVEAL ── */
+/* Animations are CSS-only, no JS opacity:0 that could hide content */
+
+/* ── COOKIE ── */
+.cookie{position:fixed;bottom:16px;left:16px;right:16px;max-width:480px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px 24px;z-index:200;display:none;font-size:13px;color:var(--text)}
+.cookie.show{display:flex;gap:16px;align-items:center}
+.cookie button{padding:8px 20px;background:var(--accent);color:var(--bg);font-size:12px;font-weight:600;border-radius:6px;white-space:nowrap;letter-spacing:0.04em}
+@media(max-width:768px){.cookie{bottom:72px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-brand">Auerbachs Keller</a>
+    <div class="nav-links">
+      <a href="#raeume">Die Raeume</a>
+      <a href="#kulinarik">Kulinarik</a>
+      <a href="#geschichte">Geschichte</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="tel:0341216100" class="nav-cta">Reservieren</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="label">Seit 1525 · Leipzig · Maedler-Passage</div>
+        <h1 class="h-display">Wo Goethe<br>den Faust schrieb</h1>
+        <p class="body-lg">Deutschlands beruehrtestes Kellerrestaurant — 500 Jahre Gastfreundschaft in historischen Gewoelben. Saechsische Kueche, die Geschichte schmecken laesst.</p>
+        <div class="hero-btns">
+          <a href="tel:0341216100" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Tisch reservieren
+          </a>
+          <a href="#raeume" class="btn-ghost">Entdecken</a>
+        </div>
+        <div class="stats-bar">
+          <div class="stat"><div class="stat-num">4.4 ★</div><div class="stat-label">Google Rating</div></div>
+          <div class="stat" style="padding-left:24px"><div class="stat-num">9.500+</div><div class="stat-label">Bewertungen</div></div>
+          <div class="stat" style="padding-left:24px"><div class="stat-num">1525</div><div class="stat-label">Gegruendet</div></div>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/11/655_start_grosserkeller.jpg?m=1689807220" alt="Der Grosse Keller — historisches Gewoelbe mit atmosphaerischer Beleuchtung" loading="eager">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIE RAEUME -->
+<section id="raeume">
+  <div class="container">
+    <div class="section-anim">
+      <div class="label">Unser Haus</div>
+      <h2 class="h-section" style="margin-top:12px">Vier Jahrhunderte.<br>Vier Raeume.</h2>
+    </div>
+    <div class="rooms-grid reveal" style="transition-delay:.15s">
+      <div class="room-card">
+        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/11/655_start_grosserkeller.jpg?m=1689807220" alt="Grosser Keller" loading="lazy">
+        <div class="room-info">
+          <div class="room-name">Grosser Keller</div>
+          <div class="room-desc">Klassisch saechsische Kueche a la carte im geschichtstraechtigen Gewoelbe.</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/11/656_start_weinstuben_0.jpg?m=1689808415" alt="Historische Weinstuben" loading="lazy">
+        <div class="room-info">
+          <div class="room-name">Historische Weinstuben</div>
+          <div class="room-desc">Vier restaurierte Gastraeume aus dem 16. bis 19. Jahrhundert.</div>
+        </div>
+      </div>
+      <div class="room-card">
+        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/11/657_start_mephistobar.jpg?m=1689808245" alt="Mephisto Bar" loading="lazy">
+        <div class="room-info">
+          <div class="room-name">Mephisto Bar</div>
+          <div class="room-desc">Kaffee-Spezialitaeten am Tag, extravagante Cocktails am Abend.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZITAT -->
+<section class="quote-section" id="geschichte">
+  <div class="container reveal">
+    <div class="ornament"></div>
+    <blockquote class="quote-text">
+      &bdquo;Wer nach Leipzig zur Messe gereist,<br>ohne in Auerbachs Keller zu gehen,<br>der schweige still.&ldquo;
+    </blockquote>
+    <div class="quote-attr">Saechsisches Sprichwort, 17. Jahrhundert</div>
+    <div class="ornament"></div>
+  </div>
+</section>
+
+<!-- KULINARIK -->
+<section id="kulinarik">
+  <div class="container">
+    <div class="split reveal">
+      <div>
+        <div class="label">Kulinarik</div>
+        <h2 class="h-section" style="margin-top:12px;margin-bottom:20px">Saechsische Kueche.<br>Neu interpretiert.</h2>
+        <p class="body-lg" style="margin-bottom:32px">Von traditionellen Klassikern wie Leipziger Allerlei bis zu modernen Interpretationen saechsischer Spezialitaeten — zubereitet mit regionalen Zutaten aus der Umgebung.</p>
+        <a href="https://www.auerbachs-keller-leipzig.de/de/speisen/a-la-carte/vorspeisen.php" target="_blank" class="btn-ghost">Speisekarte ansehen →</a>
+      </div>
+      <div class="split-img">
+        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/11/435_gastro_alacarte.jpg?m=1697554355" alt="Speisekarte und Ambiente im Grossen Keller" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GESCHICHTE -->
+<section style="padding-top:0">
+  <div class="container">
+    <div class="split split-reverse reveal">
+      <div class="split-img">
+        <img src="https://www.auerbachs-keller-leipzig.de/_thumbnails_/9/134_auerbachskeller.jpg?m=1697553644" alt="Historische Szene im Fasskeller mit Mephisto" loading="lazy">
+      </div>
+      <div>
+        <div class="label">500 Jahre Geschichte</div>
+        <h2 class="h-section" style="margin-top:12px;margin-bottom:20px">Goethe. Luther.<br>Und Sie.</h2>
+        <p class="body-lg" style="margin-bottom:16px">Seit 1525 ist Auerbachs Keller Leipzigs kulturelles Herz. Johann Wolfgang von Goethe verewigte den Keller in seinem Faust — die Szene &bdquo;Auerbachs Keller in Leipzig&ldquo; machte ihn weltberuehmt.</p>
+        <p class="body-lg">Martin Luther, Zar Peter I. und unzaehlige Kuenstler, Denker und Staatsoberhaeupter waren hier zu Gast. 2025 feiert der Keller sein 500-jaehriges Jubilaeum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" style="background:var(--bg-alt);border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-anim">
+      <div class="label">Reservierung</div>
+      <h2 class="h-section" style="margin-top:12px">Wir freuen uns<br>auf Ihren Besuch.</h2>
+    </div>
+    <div class="contact-grid reveal" style="transition-delay:.15s">
+      <div>
+        <div class="contact-phone"><a href="tel:0341216100">0341 216 100</a></div>
+        <div class="contact-detail">
+          Auerbachs Keller Leipzig<br>
+          Maedler-Passage<br>
+          Grimmaische Strasse 2–4<br>
+          04109 Leipzig<br><br>
+          <a href="https://www.auerbachs-keller-leipzig.de/de/kontakt/reservierung/tisch.php" target="_blank" style="color:var(--accent)">Online-Reservierung →</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.5!2d12.3747!3d51.3397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6f82085c1f3f7%3A0x5d7b9a6e2c3b2a1!2sAuerbachs%20Keller!5e0!3m2!1sde!2sde!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">Auerbachs Keller</div>
+    <div class="footer-links">
+      <a href="#raeume">Raeume</a>
+      <a href="#kulinarik">Kulinarik</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Auerbachs Keller Leipzig</div>
+  </div>
+</footer>
+
+<!-- MOBILE CTA -->
+<div class="mobile-cta">
+  <a href="tel:0341216100">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Jetzt reservieren — 0341 216 100
+  </a>
+</div>
+
+<!-- COOKIE -->
+<div class="cookie show" id="cookie">
+  <span>Diese Website verwendet Cookies fuer die bestmoegliche Erfahrung.</span>
+  <button onclick="document.getElementById('cookie').style.display='none'">OK</button>
+</div>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+// Content is always visible — no opacity:0 animations that hide content
+</script>
+</body>
+</html>
