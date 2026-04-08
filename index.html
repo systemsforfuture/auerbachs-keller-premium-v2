@@ -648,29 +648,10 @@ section { padding: 8rem 6rem; position: relative; }
 .rating-text { font-size: 0.75rem; color: var(--cream-muted); }
 
 /* ─── SCROLL ANIMATIONS ──────────────────── */
+/* Scroll animations — content ALWAYS visible by default, animations only enhance */
+.scroll-reveal, .room-card { opacity: 1; transform: none; }
+
 @supports (animation-timeline: view()) {
-  .scroll-reveal {
-    animation: scrollFadeIn linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 35%;
-  }
-
-  @keyframes scrollFadeIn {
-    from { opacity: 0.15; transform: translateY(40px); }
-    to   { opacity: 1;    transform: translateY(0); }
-  }
-
-  .room-card {
-    animation: scrollScale linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
-  }
-
-  @keyframes scrollScale {
-    from { opacity: 0.15; transform: scale(0.96); }
-    to   { opacity: 1;    transform: scale(1); }
-  }
-
   .parallax-img {
     animation: parallaxShift linear both;
     animation-timeline: view();
@@ -678,13 +659,10 @@ section { padding: 8rem 6rem; position: relative; }
   }
 
   @keyframes parallaxShift {
-    from { transform: translateY(-5%); }
-    to   { transform: translateY(5%); }
+    from { transform: translateY(-3%); }
+    to   { transform: translateY(3%); }
   }
 }
-
-/* Fallback: always visible */
-.scroll-reveal, .room-card { opacity: 1; }
 
 /* ─── MOBILE STICKY CTA ──────────────────── */
 .mobile-cta {
@@ -876,7 +854,7 @@ body::after {
     </div>
   </div>
   <div class="hero-image">
-    <img src="http://187.77.75.92/assets/hero.jpg" alt="Auerbachs Keller Ambiente — Historisches Gewoelbe mit Kerzenlicht" loading="eager">
+    <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1920&h=1280&fit=crop&q=85" alt="Auerbachs Keller — Historisches Weinkellergewoelbe" loading="eager">
   </div>
 </section>
 
@@ -888,7 +866,7 @@ body::after {
   </div>
   <div class="rooms-grid">
     <div class="room-card">
-      <img src="http://187.77.75.92/assets/grosser-keller.jpg" alt="Grosser Keller — Historischer Speisesaal" class="parallax-img">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=1200&fit=crop&q=85" alt="Grosser Keller — Elegantes Fine Dining" class="parallax-img">
       <div class="room-overlay">
         <div class="label" style="margin-bottom:0.5rem">Bis 280 Gaeste</div>
         <div class="room-name">Grosser Keller</div>
@@ -896,7 +874,7 @@ body::after {
       </div>
     </div>
     <div class="room-card">
-      <img src="http://187.77.75.92/assets/weinstuben.jpg" alt="Historische Weinstuben — Intimes Fine Dining" class="parallax-img">
+      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1200&h=1200&fit=crop&q=85" alt="Historische Weinstuben — Weinfaesser und Tradition" class="parallax-img">
       <div class="room-overlay">
         <div class="label" style="margin-bottom:0.5rem">Exklusiv</div>
         <div class="room-name">Historische Weinstuben</div>
@@ -904,7 +882,7 @@ body::after {
       </div>
     </div>
     <div class="room-card">
-      <img src="http://187.77.75.92/assets/mephisto-bar.jpg" alt="Mephisto Bar — Atmosphaerische Cocktailbar" class="parallax-img">
+      <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&h=1200&fit=crop&q=85" alt="Mephisto Bar — Cocktails im Kerzenlicht" class="parallax-img">
       <div class="room-overlay">
         <div class="label" style="margin-bottom:0.5rem">Bar &amp; Lounge</div>
         <div class="room-name">Mephisto Bar</div>
@@ -938,14 +916,14 @@ body::after {
     </a>
   </div>
   <div class="split-image">
-    <img src="http://187.77.75.92/assets/kulinarik.jpg" alt="Kulinarik — Saechsisches Fine Dining" class="parallax-img">
+    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&h=1280&fit=crop&q=85" alt="Kulinarik — Perfekt angerichtetes Fine Dining" class="parallax-img">
   </div>
 </section>
 
 <!-- GESCHICHTE — 60/40 Reversed -->
 <section class="split-section reversed" id="geschichte">
   <div class="split-image">
-    <img src="http://187.77.75.92/assets/geschichte.jpg" alt="Historische Faust-Szene im Auerbachs Keller" class="parallax-img">
+    <img src="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=1920&h=1280&fit=crop&q=85&crop=bottom" alt="Historisches Kellergewoelbe — 500 Jahre Geschichte" class="parallax-img">
   </div>
   <div class="split-content scroll-reveal">
     <span class="label">Geschichte</span>
