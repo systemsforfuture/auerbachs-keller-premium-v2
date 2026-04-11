@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auerbachs Keller Leipzig — Seit 1525</title>
+<meta name="description" content="Auerbachs Keller Leipzig — Seit 500 Jahren das berühmteste Restaurant Deutschlands. Sächsische Küche im historischen Gewölbekeller der Mädler Passage. Goethes Faust wurde hier inspiriert.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'keller': {
+          900: '#0A0A0A',
+          800: '#111111',
+          700: '#1A1A1A',
+          600: '#222222',
+          500: '#333333',
+        },
+        'burgunder': {
+          DEFAULT: '#8B1A2C',
+          light: '#A52A3E',
+          dark: '#6B1020',
+          50: '#F5E8EB',
+        },
+        'gold': {
+          DEFAULT: '#C9A84C',
+          light: '#D4B96A',
+          dark: '#A88A35',
+        },
+        'parchment': '#F5F0E8',
+      },
+      fontFamily: {
+        'display': ['"Cormorant Garamond"', 'serif'],
+        'body': ['"DM Sans"', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #0A0A0A; color: #E8E2D8; overflow-x: hidden; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0A0A; }
+  ::-webkit-scrollbar-thumb { background: #8B1A2C; border-radius: 3px; }
+
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-body { font-family: 'DM Sans', sans-serif; }
+
+  .label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #C9A84C;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 30%, rgba(10,10,10,0.6) 70%, rgba(10,10,10,0.95) 100%);
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #8B1A2C, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, #8B1A2C, #8B1A2C, transparent);
+    transform: translateX(-50%);
+  }
+  @media (max-width: 768px) {
+    .timeline-line { left: 20px; }
+  }
+
+  .menu-card {
+    background: rgba(139,26,44,0.06);
+    border: 1px solid rgba(139,26,44,0.15);
+    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .menu-card:hover {
+    background: rgba(139,26,44,0.12);
+    border-color: rgba(139,26,44,0.35);
+    transform: translateY(-4px);
+  }
+
+  .room-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .room-card img {
+    transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .room-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .cta-btn {
+    background: #8B1A2C;
+    color: #F5F0E8;
+    padding: 16px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .cta-btn:hover {
+    background: #A52A3E;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(139,26,44,0.3);
+  }
+
+  .cta-btn-outline {
+    background: transparent;
+    color: #C9A84C;
+    padding: 14px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.4);
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .cta-btn-outline:hover {
+    border-color: #C9A84C;
+    background: rgba(201,168,76,0.08);
+  }
+
+  .nav-blur {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.8);
+    border-bottom: 1px solid rgba(139,26,44,0.15);
+  }
+
+  .parallax-img { will-change: transform; }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    line-height: 0.5;
+    color: rgba(139,26,44,0.3);
+  }
+
+  .mobile-cta { display: none; }
+  @media (max-width: 768px) {
+    .mobile-cta {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(20px);
+      padding: 12px 16px;
+      border-top: 1px solid rgba(139,26,44,0.2);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 nav-blur" id="navbar">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full border border-burgunder flex items-center justify-center">
+          <span class="font-display text-sm text-burgunder font-semibold">A</span>
+        </div>
+        <div>
+          <span class="font-display text-lg text-parchment tracking-wide">Auerbachs Keller</span>
+          <span class="hidden lg:inline text-xs text-gold/60 ml-2 font-body tracking-widest uppercase">seit 1525</span>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#geschichte" class="label text-parchment/60 hover:text-gold transition-colors">Geschichte</a>
+        <a href="#raeume" class="label text-parchment/60 hover:text-gold transition-colors">Räume</a>
+        <a href="#kueche" class="label text-parchment/60 hover:text-gold transition-colors">Küche</a>
+        <a href="#events" class="label text-parchment/60 hover:text-gold transition-colors">Events</a>
+        <a href="#kontakt" class="label text-parchment/60 hover:text-gold transition-colors">Kontakt</a>
+        <a href="https://www.auerbachs-keller-leipzig.de/reservierung/" target="_blank" class="cta-btn text-xs">Reservieren</a>
+      </div>
+      <button class="lg:hidden text-parchment" id="menuBtn" aria-label="Menü öffnen">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="lg:hidden hidden bg-keller-900/98 border-t border-burgunder/10" id="mobileMenu">
+    <div class="px-6 py-8 flex flex-col gap-6">
+      <a href="#geschichte" class="label text-parchment/60">Geschichte</a>
+      <a href="#raeume" class="label text-parchment/60">Räume</a>
+      <a href="#kueche" class="label text-parchment/60">Küche</a>
+      <a href="#events" class="label text-parchment/60">Events</a>
+      <a href="#kontakt" class="label text-parchment/60">Kontakt</a>
+      <a href="https://www.auerbachs-keller-leipzig.de/reservierung/" target="_blank" class="cta-btn text-center text-xs mt-2">Reservieren</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative min-h-screen flex items-end pb-24 lg:pb-32">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80"
+         alt="Historisches Gewölbe Auerbachs Keller"
+         class="w-full h-full object-cover parallax-img" loading="eager">
+    <div class="hero-overlay absolute inset-0"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+    <div class="hero-reveal mb-8">
+      <span class="label text-gold">Mädler Passage, Leipzig</span>
+    </div>
+    <h1 class="hero-reveal font-display text-5xl sm:text-6xl lg:text-8xl font-light text-parchment leading-[0.95] tracking-tight mb-6">
+      Fünf Jahrhunderte<br>
+      <span class="text-burgunder-light italic">Genuss & Geschichte</span>
+    </h1>
+    <p class="hero-reveal font-body text-base lg:text-lg text-parchment/60 max-w-xl leading-relaxed mb-10" style="font-weight:300;">
+      Wo Goethe seinen Faust ersann und sächsische Küche seit 1525
+      im historischen Gewölbe der Mädler Passage serviert wird.
+    </p>
+    <div class="hero-reveal flex flex-wrap gap-4">
+      <a href="https://www.auerbachs-keller-leipzig.de/reservierung/" target="_blank" class="cta-btn">Tisch reservieren</a>
+      <a href="#geschichte" class="cta-btn-outline">Unsere Geschichte</a>
+    </div>
+    <div class="hero-reveal mt-16 pt-8 border-t border-parchment/10 grid grid-cols-3 gap-8 max-w-lg">
+      <div>
+        <span class="font-display text-3xl lg:text-4xl text-burgunder-light font-light">500+</span>
+        <p class="label mt-1 text-parchment/40 text-[10px]">Jahre Geschichte</p>
+      </div>
+      <div>
+        <span class="font-display text-3xl lg:text-4xl text-burgunder-light font-light">7</span>
+        <p class="label mt-1 text-parchment/40 text-[10px]">Historische Räume</p>
+      </div>
+      <div>
+        <span class="font-display text-3xl lg:text-4xl text-burgunder-light font-light">1765</span>
+        <p class="label mt-1 text-parchment/40 text-[10px]">Goethes Besuch</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="bg-burgunder/10 border-y border-burgunder/15 py-3 overflow-hidden">
+  <div class="marquee-track">
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Seit 1525 in Leipzig</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Goethes Lieblingsweinlokal</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Sächsische Küche</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Mädler Passage</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Leipziger Tourismuspreis 2025</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Historische Gewölbe</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Faust & Mephisto</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Seit 1525 in Leipzig</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Goethes Lieblingsweinlokal</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Sächsische Küche</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Mädler Passage</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Leipziger Tourismuspreis 2025</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Historische Gewölbe</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+    <span class="label text-gold/70 mx-8 whitespace-nowrap text-[10px]">Faust & Mephisto</span>
+    <span class="text-burgunder/30 mx-2">&#9830;</span>
+  </div>
+</div>
+
+<!-- GOETHE QUOTE -->
+<section class="py-24 lg:py-32">
+  <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+    <div class="reveal-gsap">
+      <span class="quote-mark">&ldquo;</span>
+      <blockquote class="font-display text-2xl sm:text-3xl lg:text-4xl text-parchment/90 font-light italic leading-snug -mt-12 lg:-mt-16">
+        Mein Leipzig lob' ich mir!<br>Es ist ein klein Paris<br>und bildet seine Leute.
+      </blockquote>
+      <div class="divider mx-auto mt-8 mb-4"></div>
+      <cite class="label text-gold/60 not-italic text-[10px]">Johann Wolfgang von Goethe — Faust I, Auerbachs Keller</cite>
+    </div>
+  </div>
+</section>
+
+<!-- GESCHICHTE / TIMELINE -->
+<section id="geschichte" class="py-24 lg:py-32 bg-keller-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-20 reveal-gsap">
+      <span class="label text-gold">Unsere Geschichte</span>
+      <h2 class="font-display text-4xl lg:text-6xl text-parchment font-light mt-4 tracking-tight">
+        Fünf Jahrhunderte<br><span class="text-burgunder-light italic">Leipziger Gastlichkeit</span>
+      </h2>
+    </div>
+    <div class="relative max-w-4xl mx-auto">
+      <div class="timeline-line"></div>
+      <!-- 1438 -->
+      <div class="reveal-gsap relative flex flex-col md:flex-row items-center mb-20">
+        <div class="md:w-1/2 md:pr-16 md:text-right mb-6 md:mb-0">
+          <span class="font-display text-5xl lg:text-6xl text-burgunder/30 font-light">1438</span>
+          <h3 class="font-display text-xl text-parchment mt-2">Die erste Weinbar</h3>
+          <p class="font-body text-sm text-parchment/50 mt-2 leading-relaxed" style="font-weight:300;">
+            Eine Weinbar an dieser Stelle wird erstmals urkundlich erwähnt — eine der ältesten Gaststätten Leipzigs.
+          </p>
+        </div>
+        <div class="w-4 h-4 rounded-full bg-burgunder border-2 border-keller-800 z-10 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0"></div>
+        <div class="md:w-1/2 md:pl-16"></div>
+      </div>
+      <!-- 1525 -->
+      <div class="reveal-gsap relative flex flex-col md:flex-row items-center mb-20">
+        <div class="md:w-1/2 md:pr-16"></div>
+        <div class="w-5 h-5 rounded-full bg-gold border-2 border-keller-800 z-10 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0"></div>
+        <div class="md:w-1/2 md:pl-16 mb-6 md:mb-0">
+          <span class="font-display text-5xl lg:text-6xl text-gold/40 font-light">1525</span>
+          <h3 class="font-display text-xl text-parchment mt-2">Dr. Auerbach öffnet den Keller</h3>
+          <p class="font-body text-sm text-parchment/50 mt-2 leading-relaxed" style="font-weight:300;">
+            Dr. Heinrich Stromer von Auerbach, Arzt und Universitätsprofessor, hat die Idee,
+            im Keller seines Hauses Wein an Studenten auszuschenken. Der Keller übernimmt seinen Namen.
+          </p>
+        </div>
+      </div>
+      <!-- 1765 -->
+      <div class="reveal-gsap relative flex flex-col md:flex-row items-center mb-20">
+        <div class="md:w-1/2 md:pr-16 md:text-right mb-6 md:mb-0">
+          <span class="font-display text-5xl lg:text-6xl text-burgunder/30 font-light">1765</span>
+          <h3 class="font-display text-xl text-parchment mt-2">Goethe betritt den Keller</h3>
+          <p class="font-body text-sm text-parchment/50 mt-2 leading-relaxed" style="font-weight:300;">
+            Der junge Goethe studiert in Leipzig und macht Auerbachs Keller zu seinem Lieblingsweinlokal.
+            Hier sieht er die Faust-Gemälde von 1625 — die Inspiration für sein Meisterwerk.
+          </p>
+        </div>
+        <div class="w-4 h-4 rounded-full bg-burgunder border-2 border-keller-800 z-10 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0"></div>
+        <div class="md:w-1/2 md:pl-16"></div>
+      </div>
+      <!-- 1913 -->
+      <div class="reveal-gsap relative flex flex-col md:flex-row items-center mb-20">
+        <div class="md:w-1/2 md:pr-16"></div>
+        <div class="w-4 h-4 rounded-full bg-burgunder border-2 border-keller-800 z-10 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0"></div>
+        <div class="md:w-1/2 md:pl-16 mb-6 md:mb-0">
+          <span class="font-display text-5xl lg:text-6xl text-burgunder/30 font-light">1913</span>
+          <h3 class="font-display text-xl text-parchment mt-2">Die Mädler Passage entsteht</h3>
+          <p class="font-body text-sm text-parchment/50 mt-2 leading-relaxed" style="font-weight:300;">
+            Der Große Keller wird eröffnet. Die Bronzefiguren von Faust & Mephisto und den
+            verzauberten Studenten werden am Eingang aufgestellt. Max Stolz schnitzt den legendären
+            Kronleuchter — Faust auf dem Weinfass reitend.
+          </p>
+        </div>
+      </div>
+      <!-- 2025 -->
+      <div class="reveal-gsap relative flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 md:pr-16 md:text-right mb-6 md:mb-0">
+          <span class="font-display text-5xl lg:text-6xl text-gold/40 font-light">2025</span>
+          <h3 class="font-display text-xl text-gold mt-2">500 Jahre Jubiläum</h3>
+          <p class="font-body text-sm text-parchment/50 mt-2 leading-relaxed" style="font-weight:300;">
+            Ein halbes Jahrtausend Leipziger Gastlichkeit. Gewinner des Leipziger Tourismuspreises 2025.
+            Sieben historische Räume. Sächsische Küche auf höchstem Niveau.
+          </p>
+        </div>
+        <div class="w-5 h-5 rounded-full bg-gold border-2 border-keller-800 z-10 absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0"></div>
+        <div class="md:w-1/2 md:pl-16"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RÄUME -->
+<section id="raeume" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="text-center mb-16 reveal-gsap">
+      <span class="label text-gold">Unsere Räume</span>
+      <h2 class="font-display text-4xl lg:text-6xl text-parchment font-light mt-4 tracking-tight">
+        Sieben Räume,<br><span class="text-burgunder-light italic">sieben Geschichten</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-6">
+      <!-- Großer Keller -->
+      <div class="md:col-span-7 room-card reveal-gsap group">
+        <div class="relative aspect-[4/3] overflow-hidden rounded">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80" alt="Großer Keller" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-keller-900/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+            <span class="label text-gold text-[10px]">Hauptrestaurant</span>
+            <h3 class="font-display text-2xl lg:text-3xl text-parchment mt-2">Großer Keller</h3>
+            <p class="font-body text-sm text-parchment/50 mt-2 max-w-md" style="font-weight:300;">
+              Klassisch sächsische Küche à la carte unter dem Tonnengewölbe von 1913.
+              Der geschnitzte Kronleuchter zeigt Faust auf dem Weinfass.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Fasskeller -->
+      <div class="md:col-span-5 room-card reveal-gsap group">
+        <div class="relative aspect-[3/4] md:aspect-[4/3] overflow-hidden rounded">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Fasskeller" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-keller-900/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="label text-gold text-[10px]">Historisches Gewölbe</span>
+            <h3 class="font-display text-xl lg:text-2xl text-parchment mt-2">Fasskeller</h3>
+            <p class="font-body text-xs text-parchment/50 mt-2" style="font-weight:300;">Mittelalterliches Gewölbe mit Faust-Motiven von 1867.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Goethezimmer -->
+      <div class="md:col-span-5 room-card reveal-gsap group">
+        <div class="relative aspect-[4/3] overflow-hidden rounded">
+          <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb51f3a?w=800&q=80" alt="Goethezimmer" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-keller-900/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <span class="label text-gold text-[10px]">Weinstube</span>
+            <h3 class="font-display text-xl lg:text-2xl text-parchment mt-2">Goethezimmer</h3>
+            <p class="font-body text-xs text-parchment/50 mt-2" style="font-weight:300;">Gemälde von 1625, Goethe-Dokumente und Erinnerungsstücke.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Mephisto Bar -->
+      <div class="md:col-span-7 room-card reveal-gsap group">
+        <div class="relative aspect-[16/9] overflow-hidden rounded">
+          <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1200&q=80" alt="Mephisto Bar" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-keller-900/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+            <span class="label text-gold text-[10px]">Café & Cocktailbar</span>
+            <h3 class="font-display text-2xl lg:text-3xl text-parchment mt-2">Mephisto Bar</h3>
+            <p class="font-body text-sm text-parchment/50 mt-2 max-w-md" style="font-weight:300;">
+              Tagsüber Kaffee und Patisserie, abends edle Cocktails in der Mädler Passage.
+              Freitag & Samstag bis Mitternacht.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-gsap text-center mt-12">
+      <p class="font-body text-sm text-parchment/40" style="font-weight:300;">
+        Weitere Räume: Lutherzimmer · Alt-Leipzig · Hexenküche — für Gruppen ab 20 Personen
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SÄCHSISCHE KÜCHE -->
+<section id="kueche" class="py-24 lg:py-32 bg-keller-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16">
+      <div class="reveal-gsap">
+        <span class="label text-gold">Sächsische Küche</span>
+        <h2 class="font-display text-4xl lg:text-6xl text-parchment font-light mt-4 tracking-tight">
+          Tradition auf<br><span class="text-burgunder-light italic">dem Teller</span>
+        </h2>
+      </div>
+      <div class="reveal-gsap mt-4 lg:mt-0">
+        <a href="https://www.auerbachs-keller-leipzig.de/de/speisen/SuT-Seite.php" target="_blank" class="cta-btn-outline text-xs">Komplette Speisekarte</a>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Empfehlung -->
+      <div class="menu-card rounded-lg p-8 reveal-gsap lg:col-span-2 lg:row-span-2">
+        <span class="label text-gold text-[10px]">Empfehlung des Hauses</span>
+        <h3 class="font-display text-3xl lg:text-4xl text-parchment mt-4 mb-3">Wildschweinbraten</h3>
+        <p class="font-body text-sm text-parchment/50 leading-relaxed mb-6" style="font-weight:300;">
+          Champignonrahm, hausgemachter Rotkohl und Kartoffelklöße.
+          Ein sächsischer Klassiker, serviert für mindestens zwei Personen —
+          so wie es die Tradition verlangt.
+        </p>
+        <div class="flex items-end gap-2">
+          <span class="font-display text-4xl text-burgunder-light">22,50€</span>
+          <span class="font-body text-xs text-parchment/30 mb-1">pro Person · ab 2 Personen</span>
+        </div>
+        <div class="divider mt-8 mb-6"></div>
+        <p class="font-body text-xs text-parchment/30 italic" style="font-weight:300;">
+          Auch als "Schüsseln auf den Tisch" mit Wildbraten, Sauerbraten oder Schweinbraten verfügbar
+        </p>
+      </div>
+      <!-- Rindsroulade -->
+      <div class="menu-card rounded-lg p-6 reveal-gsap">
+        <span class="label text-burgunder-light text-[10px]">Typisch Sächsisch</span>
+        <h3 class="font-display text-xl text-parchment mt-3 mb-2">Hausgemachte Rindsroulade</h3>
+        <p class="font-body text-xs text-parchment/40 leading-relaxed" style="font-weight:300;">Karotte, Gewürzgurke, Speck, Kasseler, Apfelrotkohl, Kartoffelklöße</p>
+        <span class="font-display text-2xl text-burgunder-light mt-4 block">27,50€</span>
+      </div>
+      <!-- Sauerbraten -->
+      <div class="menu-card rounded-lg p-6 reveal-gsap">
+        <span class="label text-burgunder-light text-[10px]">Typisch Sächsisch</span>
+        <h3 class="font-display text-xl text-parchment mt-3 mb-2">Sächsischer Sauerbraten</h3>
+        <p class="font-body text-xs text-parchment/40 leading-relaxed" style="font-weight:300;">Apfelrotkohl, Champignons, Kartoffelklöße</p>
+        <span class="font-display text-2xl text-burgunder-light mt-4 block">27,50€</span>
+      </div>
+      <!-- Schwarzbierfleisch -->
+      <div class="menu-card rounded-lg p-6 reveal-gsap">
+        <span class="label text-burgunder-light text-[10px]">Leipziger Spezialität</span>
+        <h3 class="font-display text-xl text-parchment mt-3 mb-2">Leipziger Schwarzbierfleisch</h3>
+        <p class="font-body text-xs text-parchment/40 leading-relaxed" style="font-weight:300;">Schweinsnacken, Sauerkraut, Champignons, Zwiebeln, Gewürzgurken, Reibekuchen</p>
+        <span class="font-display text-2xl text-burgunder-light mt-4 block">27,50€</span>
+      </div>
+      <!-- Ochsenbäckchen -->
+      <div class="menu-card rounded-lg p-6 reveal-gsap">
+        <span class="label text-burgunder-light text-[10px]">Premium</span>
+        <h3 class="font-display text-xl text-parchment mt-3 mb-2">Geschmorte Ochsenbäckchen</h3>
+        <p class="font-body text-xs text-parchment/40 leading-relaxed" style="font-weight:300;">Junge Gemüse, Reibekuchen</p>
+        <span class="font-display text-2xl text-burgunder-light mt-4 block">33,00€</span>
+      </div>
+      <!-- Rehkeule -->
+      <div class="menu-card rounded-lg p-6 reveal-gsap">
+        <span class="label text-burgunder-light text-[10px]">Wild</span>
+        <h3 class="font-display text-xl text-parchment mt-3 mb-2">Rehkeulenbraten</h3>
+        <p class="font-body text-xs text-parchment/40 leading-relaxed" style="font-weight:300;">Aus der Dübener Heide. Rotkohl, Champignons, Preiselbeeren, Kartoffelklöße</p>
+        <span class="font-display text-2xl text-burgunder-light mt-4 block">32,00€</span>
+      </div>
+      <!-- Filetsteak -->
+      <div class="menu-card rounded-lg p-6 reveal-gsap">
+        <span class="label text-burgunder-light text-[10px]">Vom Grill</span>
+        <h3 class="font-display text-xl text-parchment mt-3 mb-2">Filetsteak vom Jungbullen</h3>
+        <p class="font-body text-xs text-parchment/40 leading-relaxed" style="font-weight:300;">200g, Rahmchampignons, Rotweinzwiebeln</p>
+        <span class="font-display text-2xl text-burgunder-light mt-4 block">43,00€</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEPHISTO QUOTE -->
+<section class="py-20 lg:py-28 relative overflow-hidden">
+  <div class="absolute inset-0 bg-burgunder/5"></div>
+  <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center reveal-gsap">
+    <span class="quote-mark">&ldquo;</span>
+    <blockquote class="font-display text-xl sm:text-2xl lg:text-3xl text-parchment/80 font-light italic leading-snug -mt-10 lg:-mt-14">
+      Wer nach Leipzig zur Messe gereist und hat Auerbachs Keller
+      nicht besucht, der hat Leipzig nicht gesehen.
+    </blockquote>
+    <div class="divider mx-auto mt-8 mb-4"></div>
+    <cite class="label text-gold/60 not-italic text-[10px]">Sächsisches Sprichwort, 17. Jahrhundert</cite>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="py-24 lg:py-32 bg-keller-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+      <div class="lg:col-span-2 reveal-gsap">
+        <span class="label text-gold">Veranstaltungen</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-parchment font-light mt-4 tracking-tight">
+          Kultur im<br><span class="text-burgunder-light italic">Gewölbe</span>
+        </h2>
+        <p class="font-body text-sm text-parchment/50 mt-6 leading-relaxed" style="font-weight:300;">
+          Theater, Lesungen und musikalische Abende unter historischen Gewölben.
+          Faust-Aufführungen an dem Ort, der Goethe inspirierte.
+        </p>
+        <a href="https://www.auerbachs-keller-leipzig.de/de/veranstaltungskalender/" target="_blank" class="cta-btn-outline text-xs inline-block mt-8">Alle Events</a>
+      </div>
+      <div class="lg:col-span-3 space-y-4">
+        <div class="reveal-gsap menu-card rounded-lg p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div class="flex-shrink-0 text-center sm:text-left">
+            <span class="font-display text-3xl text-burgunder-light">17</span>
+            <p class="label text-parchment/30 text-[9px]">April 2026</p>
+          </div>
+          <div class="sm:border-l sm:border-burgunder/15 sm:pl-6">
+            <h3 class="font-display text-lg text-parchment">Der kleine Prinz</h3>
+            <p class="font-body text-xs text-parchment/40 mt-1" style="font-weight:300;">Theater im Gewölbe · 18:30 Uhr</p>
+          </div>
+        </div>
+        <div class="reveal-gsap menu-card rounded-lg p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div class="flex-shrink-0 text-center sm:text-left">
+            <span class="font-display text-3xl text-burgunder-light">25</span>
+            <p class="label text-parchment/30 text-[9px]">April 2026</p>
+          </div>
+          <div class="sm:border-l sm:border-burgunder/15 sm:pl-6">
+            <h3 class="font-display text-lg text-parchment">Zwischen Fässern und Partituren</h3>
+            <p class="font-body text-xs text-parchment/40 mt-1" style="font-weight:300;">Lortzing in Auerbachs Keller · 16:30 Uhr</p>
+          </div>
+        </div>
+        <div class="reveal-gsap menu-card rounded-lg p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+          <div class="flex-shrink-0 text-center sm:text-left">
+            <span class="font-display text-3xl text-burgunder-light">26</span>
+            <p class="label text-parchment/30 text-[9px]">April 2026</p>
+          </div>
+          <div class="sm:border-l sm:border-burgunder/15 sm:pl-6">
+            <h3 class="font-display text-lg text-parchment">Kein Lotterleben</h3>
+            <p class="font-body text-xs text-parchment/40 mt-1" style="font-weight:300;">Kulturabend · 17:00 Uhr</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <div class="reveal-gsap">
+        <span class="label text-gold">Kontakt</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-parchment font-light mt-4 tracking-tight mb-10">
+          Besuchen Sie uns
+        </h2>
+        <div class="mb-8">
+          <span class="label text-parchment/30 text-[10px]">Adresse</span>
+          <p class="font-body text-parchment/80 mt-2 leading-relaxed">
+            Mädler Passage<br>Grimmaische Straße 2-4<br>04109 Leipzig
+          </p>
+          <p class="font-body text-xs text-parchment/40 mt-2 italic" style="font-weight:300;">Im Herzen der Leipziger Innenstadt</p>
+        </div>
+        <div class="mb-8">
+          <span class="label text-parchment/30 text-[10px]">Telefon & Email</span>
+          <p class="font-body text-parchment/80 mt-2">
+            <a href="tel:+493412161000" class="hover:text-gold transition-colors">+49 (0)341 21610-0</a>
+          </p>
+          <p class="font-body text-parchment/80 mt-1">
+            <a href="mailto:info@auerbachs-keller-leipzig.de" class="hover:text-gold transition-colors">info@auerbachs-keller-leipzig.de</a>
+          </p>
+        </div>
+        <div class="mb-10">
+          <span class="label text-parchment/30 text-[10px]">Social Media</span>
+          <div class="flex gap-4 mt-3">
+            <a href="https://www.instagram.com/auerbachskeller/" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Instagram</a>
+            <a href="https://www.facebook.com/auerbachskeller/" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Facebook</a>
+          </div>
+        </div>
+        <a href="https://www.auerbachs-keller-leipzig.de/reservierung/" target="_blank" class="cta-btn">Tisch reservieren</a>
+      </div>
+      <div class="reveal-gsap">
+        <div class="menu-card rounded-lg p-8 lg:p-10">
+          <h3 class="font-display text-2xl text-parchment mb-6">Großer Keller</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center border-b border-parchment/5 pb-3">
+              <span class="font-body text-sm text-parchment/60">Montag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 22:00</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-parchment/5 pb-3">
+              <span class="font-body text-sm text-parchment/60">Dienstag – Mittwoch</span>
+              <span class="font-body text-sm text-parchment/80">17:00 – 22:00</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-parchment/5 pb-3">
+              <span class="font-body text-sm text-parchment/60">Donnerstag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 22:00</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-parchment/5 pb-3">
+              <span class="font-body text-sm text-parchment/60">Freitag – Samstag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 23:00</span>
+            </div>
+            <div class="flex justify-between items-center pb-3">
+              <span class="font-body text-sm text-parchment/60">Sonntag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 22:00</span>
+            </div>
+          </div>
+          <div class="divider my-8"></div>
+          <h3 class="font-display text-2xl text-parchment mb-6">Mephisto Bar</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center border-b border-parchment/5 pb-3">
+              <span class="font-body text-sm text-parchment/60">Montag – Donnerstag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 22:00</span>
+            </div>
+            <div class="flex justify-between items-center border-b border-parchment/5 pb-3">
+              <span class="font-body text-sm text-parchment/60">Freitag – Samstag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 24:00</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="font-body text-sm text-parchment/60">Sonntag</span>
+              <span class="font-body text-sm text-parchment/80">12:00 – 18:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-gsap mt-16 rounded-lg overflow-hidden" style="height:400px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2492.9!2d12.3747!3d51.3397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a6f82bcee2c915%3A0x2fd13aad407a5596!2sAuerbachs%20Keller!5e0!3m2!1sde!2sde!4v1"
+        width="100%" height="100%" style="border:0; filter: grayscale(0.8) brightness(0.7) contrast(1.1);"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Auerbachs Keller Leipzig Standort">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-keller-800 border-t border-burgunder/10 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div class="md:col-span-2">
+        <span class="font-display text-2xl text-parchment">Auerbachs Keller</span>
+        <p class="label text-gold/50 mt-1 text-[10px]">Leipzig · Seit 1525</p>
+        <p class="font-body text-xs text-parchment/30 mt-4 max-w-sm leading-relaxed" style="font-weight:300;">
+          Das berühmteste Restaurant Deutschlands in der historischen Mädler Passage.
+          Wo Goethe seinen Faust ersann und sächsische Küche seit 500 Jahren zelebriert wird.
+        </p>
+      </div>
+      <div>
+        <span class="label text-parchment/30 text-[10px]">Navigation</span>
+        <div class="flex flex-col gap-2 mt-4">
+          <a href="#geschichte" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Geschichte</a>
+          <a href="#raeume" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Räume</a>
+          <a href="#kueche" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Küche</a>
+          <a href="#events" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Veranstaltungen</a>
+          <a href="https://auerbachs-keller-leipzig-shop.de/" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Shop</a>
+        </div>
+      </div>
+      <div>
+        <span class="label text-parchment/30 text-[10px]">Service</span>
+        <div class="flex flex-col gap-2 mt-4">
+          <a href="https://www.auerbachs-keller-leipzig.de/reservierung/" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Reservierung</a>
+          <a href="https://www.auerbachs-keller-leipzig.de/de/veranstaltungskalender/" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Veranstaltungen</a>
+          <a href="https://www.auerbachs-keller-leipzig.de/de/service/anfahrt.php" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Anfahrt</a>
+          <a href="https://www.auerbachs-keller-leipzig.de/de/service/karriere.php" target="_blank" class="font-body text-sm text-parchment/50 hover:text-gold transition-colors">Karriere</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-parchment/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="font-body text-xs text-parchment/20" style="font-weight:300;">
+        &copy; 2026 Auerbachskeller Leipzig GmbH ·
+        <a href="https://www.auerbachs-keller-leipzig.de/de/service/allgemein/impressum.php" target="_blank" class="hover:text-parchment/40">Impressum</a> ·
+        <a href="https://www.auerbachs-keller-leipzig.de/de/service/allgemein/datenschutz.php" target="_blank" class="hover:text-parchment/40">Datenschutz</a>
+      </p>
+      <p class="font-body text-xs text-parchment/15" style="font-weight:300;">Design by SYSTEMS&trade;</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta">
+  <a href="https://www.auerbachs-keller-leipzig.de/reservierung/" target="_blank" class="cta-btn flex-1 text-center text-xs">Tisch reservieren</a>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+});
+
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.style.background = window.scrollY > 80 ? 'rgba(10,10,10,0.95)' : 'rgba(10,10,10,0.8)';
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero: set initial state, then animate in
+document.querySelectorAll('.hero-reveal').forEach(el => { gsap.set(el, {opacity:0, y:40}); });
+const heroTl = gsap.timeline({ delay: 0.2, onComplete: () => {
+  document.querySelectorAll('.hero-reveal').forEach(el => { el.style.opacity='1'; el.style.transform='none'; });
+}});
+document.querySelectorAll('.hero-reveal').forEach((el, i) => {
+  heroTl.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, i * 0.15);
+});
+// Fallback: if GSAP fails, show hero after 2s
+setTimeout(() => {
+  document.querySelectorAll('.hero-reveal').forEach(el => {
+    if (getComputedStyle(el).opacity === '0') { el.style.opacity='1'; el.style.transform='none'; }
+  });
+}, 2000);
+
+gsap.utils.toArray('.reveal-gsap').forEach((el) => {
+  gsap.fromTo(el,
+    { opacity: 0, y: 35, filter: 'blur(4px)' },
+    {
+      opacity: 1, y: 0, filter: 'blur(0px)',
+      duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' }
+    }
+  );
+});
+
+gsap.to('.parallax-img', {
+  y: 100, ease: 'none',
+  scrollTrigger: { trigger: '.parallax-img', start: 'top top', end: 'bottom top', scrub: 1 }
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
